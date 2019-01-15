@@ -239,20 +239,9 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
     }
 
     public String token() {
+        SecureTokenGenerator tokenGenerator = new SecureTokenGenerator();
         
-        String sToken="";
-        try {
-            SecureRandom number = SecureRandom.getInstance("SHA1PRNG");
-            // Generate 20 integers 0..20
-            int[] numToken = new int[20];
-            for (int i = 0; i <= numToken.length; i++) {
-                numToken[i] = number.nextInt();
-                sToken+= String.valueOf(numToken[i]);
-            }
-        } catch (NoSuchAlgorithmException nsae) {
-            
-        }
-        return sToken;
+        return tokenGenerator.nextToken();
 
     }
 
