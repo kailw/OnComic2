@@ -37,28 +37,28 @@ public class FacturaService_1 extends GenericServiceImplementation implements Se
         this.oRequest = oRequest;
         this.ob = ob;
     }
-
-    public ReplyBean getcountusuario() throws Exception {
-        ReplyBean oReplyBean;
-        ConnectionInterface oConnectionPool = null;
-        Connection oConnection;
-        try {
-            Integer id = Integer.parseInt(oRequest.getParameter("id"));
-            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-            oConnection = oConnectionPool.newConnection();
-            FacturaDao_1 oFacturaDao = (FacturaDao_1) DaoFactory.getDao(oConnection, ob, usuarioSession);
-            int registros = oFacturaDao.getcountusuario(id);
-            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            oReplyBean = new ReplyBean(200, oGson.toJson(registros));
-        } catch (Exception ex) {
-            throw new Exception("ERROR: Service level: getcount method: " + ob + " object", ex);
-        } finally {
-            oConnectionPool.disposeConnection();
-        }
-
-        return oReplyBean;
-
-    }
+//
+//    public ReplyBean getcountusuario() throws Exception {
+//        ReplyBean oReplyBean;
+//        ConnectionInterface oConnectionPool = null;
+//        Connection oConnection;
+//        try {
+//            Integer id = Integer.parseInt(oRequest.getParameter("id"));
+//            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+//            oConnection = oConnectionPool.newConnection();
+//            FacturaDao_1 oFacturaDao = (FacturaDao_1) DaoFactory.getDao(oConnection, ob, usuarioSession);
+//            int registros = oFacturaDao.getcountusuario(id);
+//            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
+//            oReplyBean = new ReplyBean(200, oGson.toJson(registros));
+//        } catch (Exception ex) {
+//            throw new Exception("ERROR: Service level: getcount method: " + ob + " object", ex);
+//        } finally {
+//            oConnectionPool.disposeConnection();
+//        }
+//
+//        return oReplyBean;
+//
+//    }
 
     public ReplyBean getpageusuario() throws Exception {
         ReplyBean oReplyBean;

@@ -30,18 +30,18 @@ public class FacturaDao_0 extends GenericDaoImplementation implements DaoInterfa
         }
     }
 
-    @Override
-    public int getcount() throws Exception {
-//        if (oUsuarioBeanSession != null) {
-//            strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + oUsuarioBeanSession.getId();
-//        }
-        return super.getcount();
-    }
+//    @Override
+//    public int getcount() throws Exception {
+////        if (oUsuarioBeanSession != null) {
+////            strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + oUsuarioBeanSession.getId();
+////        }
+//        return super.getcount();
+//    }
 
-    public int getcountusuario(int idUsuario) throws Exception {
-        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idUsuario;
-        return this.getcount();
-    }
+//    public int getcountusuario(int idUsuario) throws Exception {
+//        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idUsuario;
+//        return this.getcount();
+//    }
 
     public ArrayList<FacturaBean> getpageusuario(int iRpp, int iPage, HashMap<String, String> hmOrder, int idUsuario, Integer expand) throws Exception {
         if (idUsuario == oUsuarioBeanSession.getId()) {

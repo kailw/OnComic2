@@ -91,10 +91,12 @@ public class GenericServiceImplementation implements ServiceInterface {
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
+            Integer id = Integer.parseInt(oRequest.getParameter("id"));            
+            String campo = oRequest.getParameter("campo");
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
-            int registros = oDao.getcount();
+            int registros = oDao.getcount(id, campo);
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oReplyBean = new ReplyBean(200, oGson.toJson(registros));
         } catch (Exception ex) {
@@ -125,7 +127,6 @@ public class GenericServiceImplementation implements ServiceInterface {
 //        }
 //        return oReplyBean;
 //    }
-
     @Override
     public ReplyBean create() throws Exception {
         ReplyBean oReplyBean;

@@ -29,10 +29,11 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
                 throw new Exception("Error en Dao get de " + ob + ": No autorizado");
             }
         } else {
-            throw new Exception("No existe " + ob );
+            throw new Exception("No existe " + ob);
         }
     }
 
+    /*
     @Override
     public int getcount() throws Exception {
         strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + oUsuarioBeanSession.getId();
@@ -44,6 +45,16 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
             return this.getcount();
         }
         throw new Exception("Error en Dao get de " + ob + ": No autorizado");
+    }
+     */
+    @Override
+    public int getcount(int id, String campo) throws Exception {
+
+        if (id == oUsuarioBeanSession.getId()) {
+            return super.getcount(id, campo);
+        } else {
+            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+        }
     }
 
     public ArrayList<FacturaBean> getpageusuario(int iRpp, int iPage, HashMap<String, String> hmOrder, int idUsuario, Integer expand) throws Exception {

@@ -31,7 +31,7 @@ public class TipousuarioDao_2 extends GenericDaoImplementation implements DaoInt
     }
 
     @Override
-    public int getcount() throws Exception {
+    public int getcount(int id, String campo) throws Exception {
         throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
     }
 

@@ -39,7 +39,7 @@ public class ServiceFactory {
     public static ReplyBean executeService(HttpServletRequest oRequest) throws Exception {
 
         String ob = oRequest.getParameter("ob");
-        String op = oRequest.getParameter("op");
+        String op = oRequest.getParameter("op");        
 
         int idSessionUserTipe;
         UsuarioBean oUsuarioBeanSession = (UsuarioBean) oRequest.getSession().getAttribute("user");
@@ -139,9 +139,9 @@ public class ServiceFactory {
                             case "getpageusuario":
                                 oReplyBean = oFacturaService.getpageusuario();
                                 break;
-                            case "getcountusuario":
-                                oReplyBean = oFacturaService.getcountusuario();
-                                break;
+//                            case "getcountusuario":
+//                                oReplyBean = oFacturaService.getcountusuario();
+//                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
@@ -171,9 +171,9 @@ public class ServiceFactory {
                             case "getlineafactura":
                                 oReplyBean = oLineaService.getlineafactura();
                                 break;
-                            case "getcountlinea":
-                                oReplyBean = oLineaService.getcountlinea();
-                                break;
+//                            case "getcountlinea":
+//                                oReplyBean = oLineaService.getcountlinea();
+//                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
@@ -468,8 +468,8 @@ public class ServiceFactory {
                             case "getpageusuario"://obtengo las facturas del usuario
                                 oReplyBean = oFacturaService.getpageusuario();
                                 break;
-                            case "getcountusuario":
-                                oReplyBean = oFacturaService.getcountusuario();
+                            case "getcount":
+                                oReplyBean = oFacturaService.getcount();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -724,3 +724,4 @@ public class ServiceFactory {
     }
 
 }
+

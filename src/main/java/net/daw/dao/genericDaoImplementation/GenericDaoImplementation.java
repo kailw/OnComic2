@@ -47,7 +47,7 @@ public class GenericDaoImplementation implements DaoInterface {
         //Sacadas todas las sentencias SQL de los metodos
         strSQL_get = "SELECT * FROM " + ob + " WHERE id=?";
         strSQL_remove = "DELETE FROM " + ob + " WHERE id=?";
-        strSQL_getcount = "SELECT COUNT(id) FROM " + ob;
+//        strSQL_getcount = "SELECT COUNT(id) FROM " + ob;
         //strSQL_create = "INSERT INTO " + ob;
         //strSQL_update = "UPDATE " + ob + " SET ";
         strSQL_getpage = "SELECT * FROM " + ob;
@@ -102,18 +102,23 @@ public class GenericDaoImplementation implements DaoInterface {
     }
 
     @Override
-    public int getcount() throws Exception {
+    public int getcount(int id, String campo) throws Exception {
         int res = 0;
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
+            if (id > 0) {
+                strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE " + campo + "=" + id;
+            } else {
+                strSQL_getcount = "SELECT COUNT(id) FROM " + ob;
+            }
             oPreparedStatement = oConnection.prepareStatement(strSQL_getcount);
             oResultSet = oPreparedStatement.executeQuery();
             if (oResultSet.next()) {
                 res = oResultSet.getInt(1);
             }
         } catch (SQLException e) {
-            throw new Exception("Error en Dao get de " + ob, e);
+            throw new Exception("Error en Dao getcount de " + ob, e);
         } finally {
             if (oResultSet != null) {
                 oResultSet.close();
@@ -147,7 +152,6 @@ public class GenericDaoImplementation implements DaoInterface {
 //        }
 //        return res;
 //    }
-
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
         String strSQL = "INSERT INTO " + ob;

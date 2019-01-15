@@ -39,7 +39,7 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
     }
 
     @Override
-    public int getcount() throws Exception {
+    public int getcount(int id, String campo) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 
