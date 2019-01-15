@@ -59,7 +59,7 @@ public class ColeccionBean extends GenericBeanImplementation implements BeanInte
     public String getPairs() {
         String strPairs = "";
         strPairs += "id=" + id + ",";
-        strPairs += "desc=" + EncodingHelper.quotate(desc);
+        strPairs += "`desc`=" + EncodingHelper.quotate(desc);
         strPairs += " WHERE id=" + id;
         return strPairs;
     }

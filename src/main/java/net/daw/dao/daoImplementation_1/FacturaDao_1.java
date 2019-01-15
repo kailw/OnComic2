@@ -19,13 +19,6 @@ public class FacturaDao_1 extends GenericDaoImplementation implements DaoInterfa
 
     }
 
-
-
-//    public int getcountusuario(int idusuario) throws Exception {
-//        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idusuario;
-//        return super.getcount();
-//
-//    }
     public ArrayList<FacturaBean> getpageusuario(int iRpp, int iPage, HashMap<String, String> hmOrder, int idUsuario, Integer expand) throws Exception {
         String strSQL = "SELECT * FROM " + ob;
         strSQL += SqlBuilder.buildSqlOrder(hmOrder);

@@ -38,14 +38,14 @@ public class FacturaBean extends GenericBeanImplementation implements BeanInterf
     private UsuarioBean obj_Usuario;
 
     @Expose
-    private int link_linea;
+    private int numLinea;
 
-    public int getLink_linea() {
-        return link_linea;
+    public int getNumLinea() {
+        return numLinea;
     }
 
-    public void setLink_linea(int link_linea) {
-        this.link_linea = link_linea;
+    public void setNumLinea(int numLinea) {
+        this.numLinea = numLinea;
     }
 
     public UsuarioBean getObj_Usuario() {
@@ -88,13 +88,8 @@ public class FacturaBean extends GenericBeanImplementation implements BeanInterf
         this.setIva(oResultSet.getFloat("iva"));
 
         DaoInterface oLineaDao = DaoFactory.getDao(oConnection, "linea", oUsuarioBeanSession);
-        if (oLineaDao.getClass() == LineaDao_1.class) {
-            LineaDao_1 oLineaDao_1 = (LineaDao_1) oLineaDao;
-            this.setLink_linea(oLineaDao_1.getcountlinea(this.id));
-        } else {
-            LineaDao_2 oLineaDao_2 = (LineaDao_2) oLineaDao;
-            this.setLink_linea(oLineaDao_2.getcountlinea(this.id));
-        }
+        this.setNumLinea(oLineaDao.getcount(this.id, "id_factura"));
+        
         if (expand > 0) {
             DaoInterface oUsuarioDao = DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
             this.setObj_Usuario((UsuarioBean) oUsuarioDao.get(oResultSet.getInt("id_usuario"), expand - 1));

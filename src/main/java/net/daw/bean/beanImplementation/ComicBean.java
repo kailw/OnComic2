@@ -181,8 +181,8 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         this.setExistencias(oResultSet.getInt("existencias"));
         this.setPrecio(oResultSet.getFloat("precio"));
         this.setDescuento(oResultSet.getFloat("descuento"));
-        this.setFoto(oResultSet.getString("foto"));        
-        
+        this.setFoto(oResultSet.getString("foto"));
+
         if (expand > 0) {
             DaoInterface ocoleccionDao = DaoFactory.getDao(oConnection, "coleccion", oUsuarioBeanSession);
             this.setObj_coleccion((ColeccionBean) ocoleccionDao.get(oResultSet.getInt("id_coleccion"), expand - 1));
@@ -244,7 +244,7 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
 //        Instant instant = fechapublicacion.toInstant();
 //        
 //        LocalDateTime localDateTime = instant.atZone(defaultZoneId).toLocalDateTime();
-        
+
         String strPairs = "";
         strPairs += "id=" + id + ",";
         strPairs += "titulo=" + EncodingHelper.quotate(titulo) + ",";
@@ -258,7 +258,11 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         strPairs += "precio=" + precio + ",";
         strPairs += "descuento=" + descuento + ",";
         strPairs += "foto=" + EncodingHelper.quotate(foto) + ",";
-        strPairs += "id_coleccion=" + id_coleccion;
+        if (id_coleccion == 0) {
+            strPairs += "id_coleccion=" + obj_coleccion.getId();
+        } else {
+            strPairs += "id_coleccion=" + id_coleccion;
+        }
         strPairs += " WHERE id=" + id;
 
         return strPairs;

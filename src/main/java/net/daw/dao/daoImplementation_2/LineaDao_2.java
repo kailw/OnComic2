@@ -41,35 +41,6 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
         }
     }
 
-    public int getcountlinea(int idFactura) throws Exception {
-        int res = 0;
-//        if (idUsuario == oUsuarioBeanSession.getId()) {
-            String strSQL = "SELECT COUNT(id) FROM " + ob;
-            strSQL += " WHERE id_factura=? ";
-            ResultSet oResultSet = null;
-            PreparedStatement oPreparedStatement = null;
-            try {
-                oPreparedStatement = oConnection.prepareStatement(strSQL);
-                oPreparedStatement.setInt(1, idFactura);
-                oResultSet = oPreparedStatement.executeQuery();
-                if (oResultSet.next()) {
-                    res = oResultSet.getInt(1);
-                }
-            } catch (SQLException e) {
-                throw new Exception("Error en Dao get de " + ob, e);
-            } finally {
-                if (oResultSet != null) {
-                    oResultSet.close();
-                }
-                if (oPreparedStatement != null) {
-                    oPreparedStatement.close();
-                }
-            }
-//        } else {
-//            return res;
-//        }
-        return res;
-    }
 
     public ArrayList<LineaBean> getlineafactura(int iRpp, int iPage, int idFactura, Integer expand) throws Exception {
         String strSQL = "SELECT * FROM " + ob;
@@ -111,8 +82,12 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
     }
 
     @Override
-    public int getcount(int id, String campo) throws Exception {
-        throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+    public int getcount(int id, String campo) throws Exception {       
+        if (id == oUsuarioBeanSession.getId()) {
+            return super.getcount(id, campo);
+        } else {
+            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+        }
     }
 
     @Override

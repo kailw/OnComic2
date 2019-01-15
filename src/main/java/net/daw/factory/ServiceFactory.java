@@ -39,7 +39,7 @@ public class ServiceFactory {
     public static ReplyBean executeService(HttpServletRequest oRequest) throws Exception {
 
         String ob = oRequest.getParameter("ob");
-        String op = oRequest.getParameter("op");        
+        String op = oRequest.getParameter("op");
 
         int idSessionUserTipe;
         UsuarioBean oUsuarioBeanSession = (UsuarioBean) oRequest.getSession().getAttribute("user");
@@ -148,7 +148,7 @@ public class ServiceFactory {
                         }
                         break;
                     case "linea":
-                        LineaService_1 oLineaService = new LineaService_1(oRequest, ob);                        
+                        LineaService_1 oLineaService = new LineaService_1(oRequest, ob);
                         switch (op) {
                             case "get":
                                 oReplyBean = oLineaService.get();
@@ -485,8 +485,8 @@ public class ServiceFactory {
                             case "getlineafactura"://obtengo las lineas de la factura
                                 oReplyBean = oLineaService.getlineafactura();
                                 break;
-                            case "getcountlinea":
-                                oReplyBean = oLineaService.getcountlinea();
+                            case "getcount":
+                                oReplyBean = oLineaService.getcount();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -562,16 +562,19 @@ public class ServiceFactory {
                         }
                         break;
                     case "autor":
-                        AutorService_2 oAutorService2 = new AutorService_2(oRequest, ob);
+                        AutorService_1 oAutorService = new AutorService_1(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oAutorService2.get();
+                                oReplyBean = oAutorService.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oAutorService2.getcount();
+                                oReplyBean = oAutorService.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oAutorService2.getpage();
+                                oReplyBean = oAutorService.getpage();
+                                break;
+                            case "create":
+                                oReplyBean = oAutorService.create();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -724,4 +727,3 @@ public class ServiceFactory {
     }
 
 }
-

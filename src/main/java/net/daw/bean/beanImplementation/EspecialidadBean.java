@@ -57,9 +57,9 @@ public class EspecialidadBean extends GenericBeanImplementation implements BeanI
 
     @Override
     public String getPairs() {
-        String strPairs = "";
+        String strPairs = "";       
         strPairs += "id=" + id + ",";
-        strPairs += "desc=" + EncodingHelper.quotate(desc);
+        strPairs += "`desc`=" + EncodingHelper.quotate(desc);
         strPairs += " WHERE id=" + id;
         return strPairs;
     }

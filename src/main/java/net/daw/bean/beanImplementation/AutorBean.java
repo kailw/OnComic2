@@ -58,7 +58,7 @@ public class AutorBean extends GenericBeanImplementation implements BeanInterfac
     @Override
     public String getPairs() {
         String strPairs = "";
-        strPairs += "id=" + id + ",";
+        strPairs += "id=" + id + ",";        
         strPairs += "nombre=" + EncodingHelper.quotate(nombre);
         strPairs += " WHERE id=" + id;
         return strPairs;

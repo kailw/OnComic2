@@ -33,20 +33,6 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
         }
     }
 
-    /*
-    @Override
-    public int getcount() throws Exception {
-        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + oUsuarioBeanSession.getId();
-        return super.getcount();
-    }
-
-    public int getcountusuario(int idUsuario) throws Exception {
-        if (idUsuario == oUsuarioBeanSession.getId()) {
-            return this.getcount();
-        }
-        throw new Exception("Error en Dao get de " + ob + ": No autorizado");
-    }
-     */
     @Override
     public int getcount(int id, String campo) throws Exception {
 

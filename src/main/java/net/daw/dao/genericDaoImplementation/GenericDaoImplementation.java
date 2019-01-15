@@ -41,7 +41,7 @@ public class GenericDaoImplementation implements DaoInterface {
         if (oUsuarioBeanSession != null) {
             this.oUsuarioBeanSession = oUsuarioBeanSession;
             this.idSessionUser = oUsuarioBeanSession.getId();
-            this.idSessionUserTipe = oUsuarioBeanSession.getId_tipoUsuario();
+            this.idSessionUserTipe = oUsuarioBeanSession.getId_tipousuario();
         }
 
         //Sacadas todas las sentencias SQL de los metodos
@@ -130,28 +130,6 @@ public class GenericDaoImplementation implements DaoInterface {
         return res;
     }
 
-//    public int getcountX() throws Exception {
-//        int res = 0;
-//        ResultSet oResultSet = null;
-//        PreparedStatement oPreparedStatement = null;
-//        try {
-//            oPreparedStatement = oConnection.prepareStatement(strSQL_getcount);
-//            oResultSet = oPreparedStatement.executeQuery();
-//            if (oResultSet.next()) {
-//                res = oResultSet.getInt(1);
-//            }
-//        } catch (SQLException e) {
-//            throw new Exception("Error en Dao get de " + ob, e);
-//        } finally {
-//            if (oResultSet != null) {
-//                oResultSet.close();
-//            }
-//            if (oPreparedStatement != null) {
-//                oPreparedStatement.close();
-//            }
-//        }
-//        return res;
-//    }
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
         String strSQL = "INSERT INTO " + ob;

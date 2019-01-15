@@ -57,23 +57,4 @@ public class LineaService_2 extends GenericServiceImplementation implements Serv
         return oReplyBean;
     }
 
-    public ReplyBean getcountlinea() throws Exception {
-        ReplyBean oReplyBean;
-        ConnectionInterface oConnectionPool = null;
-        Connection oConnection;
-        try {
-            Integer id_factura = Integer.parseInt(oRequest.getParameter("id"));
-            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-            oConnection = oConnectionPool.newConnection();
-            LineaDao_2 oLineaDao = new LineaDao_2(oConnection, ob, usuarioSession);
-            int registros = oLineaDao.getcountlinea(id_factura);
-            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            oReplyBean = new ReplyBean(200, oGson.toJson(registros));
-        } catch (Exception ex) {
-            throw new Exception("ERROR: Service level: getcount method: " + ob + " object", ex);
-        } finally {
-            oConnectionPool.disposeConnection();
-        }
-        return oReplyBean;
-    }
 }
