@@ -29,7 +29,6 @@ public class FacturaDao_1 extends GenericDaoImplementation implements DaoInterfa
             ResultSet oResultSet = null;
             PreparedStatement oPreparedStatement = null;
             try {
-
                 oPreparedStatement = oConnection.prepareStatement(strSQL);
                 oPreparedStatement.setInt(1, idUsuario);
                 oResultSet = oPreparedStatement.executeQuery();

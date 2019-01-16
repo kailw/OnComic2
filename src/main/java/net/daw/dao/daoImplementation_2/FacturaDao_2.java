@@ -35,7 +35,6 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
 
     @Override
     public int getcount(int id, String campo) throws Exception {
-
         if (id == oUsuarioBeanSession.getId()) {
             return super.getcount(id, campo);
         } else {

@@ -161,6 +161,7 @@ public class GenericServiceImplementation implements ServiceInterface {
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
+            Integer id_usuario = Integer.parseInt(oRequest.getParameter("id"));
             Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
             Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
             HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));

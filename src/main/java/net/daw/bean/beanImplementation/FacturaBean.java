@@ -14,8 +14,6 @@ import java.time.ZoneId;
 import java.util.Date;
 import net.daw.bean.genericBeanImplementation.GenericBeanImplementation;
 import net.daw.bean.publicBeanInterface.BeanInterface;
-import net.daw.dao.daoImplementation_1.LineaDao_1;
-import net.daw.dao.daoImplementation_2.LineaDao_2;
 import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.factory.DaoFactory;
 import net.daw.helper.EncodingHelper;
@@ -88,8 +86,8 @@ public class FacturaBean extends GenericBeanImplementation implements BeanInterf
         this.setIva(oResultSet.getFloat("iva"));
 
         DaoInterface oLineaDao = DaoFactory.getDao(oConnection, "linea", oUsuarioBeanSession);
-        this.setNumLinea(oLineaDao.getcount(this.id, "id_factura"));
-        
+        this.setNumLinea(oLineaDao.getcount(oUsuarioBeanSession.getId(), "id_factura"));
+
         if (expand > 0) {
             DaoInterface oUsuarioDao = DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
             this.setObj_Usuario((UsuarioBean) oUsuarioDao.get(oResultSet.getInt("id_usuario"), expand - 1));
