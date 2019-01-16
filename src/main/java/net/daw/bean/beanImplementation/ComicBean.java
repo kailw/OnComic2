@@ -239,18 +239,18 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
 
     @Override
     public String getPairs() {
-//        ZoneId defaultZoneId = ZoneId.systemDefault();
-//        
-//        Instant instant = fechapublicacion.toInstant();
-//        
-//        LocalDateTime localDateTime = instant.atZone(defaultZoneId).toLocalDateTime();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        
+        Instant instant = fechapublicacion.toInstant();
+        
+        LocalDateTime localDateTime = instant.atZone(defaultZoneId).toLocalDateTime();
 
         String strPairs = "";
         strPairs += "id=" + id + ",";
         strPairs += "titulo=" + EncodingHelper.quotate(titulo) + ",";
         strPairs += "`desc`=" + EncodingHelper.quotate(desc) + ",";
         strPairs += "isbn=" + EncodingHelper.quotate(isbn) + ",";
-        strPairs += "fechapublicacion=" + EncodingHelper.quotate(fechapublicacion.toString()) + ",";
+        strPairs += "fechapublicacion=" + EncodingHelper.quotate(localDateTime.toString()) + ",";
         strPairs += "idioma=" + EncodingHelper.quotate(idioma) + ",";
         strPairs += "pagina=" + pagina + ",";
         strPairs += "color=" + color + ",";

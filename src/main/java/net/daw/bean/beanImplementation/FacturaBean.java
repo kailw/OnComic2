@@ -112,7 +112,7 @@ public class FacturaBean extends GenericBeanImplementation implements BeanInterf
         strPairs += "id=" + id + ",";
         strPairs += "fecha=" + EncodingHelper.quotate(localDate.toString()) + ",";
         strPairs += "iva=" + iva + ",";
-        strPairs += "id_usuario=" + getObj_Usuario().getId();
+        strPairs += "id_usuario=" + id_usuario;
         strPairs += " WHERE id=" + id;
         return strPairs;
     }

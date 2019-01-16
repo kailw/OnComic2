@@ -215,7 +215,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += EncodingHelper.quotate(email) + ",";
         strColumns += id_tipousuario + ",";
         strColumns += EncodingHelper.quotate(token()) + ",";
-        strColumns += validacion;
+        strColumns += 0;
         return strColumns;
     }
 
