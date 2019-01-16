@@ -92,7 +92,7 @@ public class GenericServiceImplementation implements ServiceInterface {
         Connection oConnection;
         try {
             Integer id = 0;
-            if(oRequest.getParameter("id")!=null){
+            if (oRequest.getParameter("id") != null) {
                 id = Integer.parseInt(oRequest.getParameter("id"));
             }
             String campo = oRequest.getParameter("campo");
@@ -161,14 +161,20 @@ public class GenericServiceImplementation implements ServiceInterface {
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
-            Integer id_usuario = Integer.parseInt(oRequest.getParameter("id"));
-            Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
-            Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
+            Integer idAjena = 0;
+            Integer iRpp = 0;
+            Integer iPage = 0;
+            if (oRequest.getParameter("id") != null && oRequest.getParameter("rpp") != null && oRequest.getParameter("page") != null) {
+                idAjena = Integer.parseInt(oRequest.getParameter("id"));
+                iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
+                iPage = Integer.parseInt(oRequest.getParameter("page"));
+            }
+            String campo = oRequest.getParameter("campo");            
             HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
-            ArrayList<BeanInterface> alBean = oDao.getpage(iRpp, iPage, hmOrder, 1);
+            ArrayList<BeanInterface> alBean = oDao.getpage(iRpp, iPage, hmOrder, 1, idAjena, campo);
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oReplyBean = new ReplyBean(200, oGson.toJson(alBean));
         } catch (Exception ex) {

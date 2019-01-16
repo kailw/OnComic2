@@ -45,8 +45,8 @@ public class TipousuarioDao_2 extends GenericDaoImplementation implements DaoInt
         throw new Exception("Error en Dao update de " + ob + ": No autorizado");
     }
 
-    @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
-        throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
-    }
+//    @Override
+//    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
+//        throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
+//    }
 }

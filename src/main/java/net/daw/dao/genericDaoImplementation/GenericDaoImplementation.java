@@ -181,12 +181,18 @@ public class GenericDaoImplementation implements DaoInterface {
     }
 
     @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
+    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
         String strSQL = "SELECT * FROM " + ob;
         strSQL += SqlBuilder.buildSqlOrder(hmOrder);
         ArrayList<BeanInterface> alBean;
         if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
+            if (idAjena > 0) {
+                strSQL += " WHERE " + campo + "=" + idAjena;
+            } else {
+                strSQL += "";
+            }
             strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
+
             ResultSet oResultSet = null;
             PreparedStatement oPreparedStatement = null;
             try {

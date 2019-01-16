@@ -42,52 +42,52 @@ public class FacturaDao_0 extends GenericDaoImplementation implements DaoInterfa
 //        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idUsuario;
 //        return this.getcount();
 //    }
-
-    public ArrayList<FacturaBean> getpageusuario(int iRpp, int iPage, HashMap<String, String> hmOrder, int idUsuario, Integer expand) throws Exception {
-        if (idUsuario == oUsuarioBeanSession.getId()) {
-            String strSQL = "SELECT * FROM " + ob;
-            strSQL += SqlBuilder.buildSqlOrder(hmOrder);
-            ArrayList<FacturaBean> alFacturaBean;
-            if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
-                strSQL += " WHERE id_usuario=? ";
-                strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
-                ResultSet oResultSet = null;
-                PreparedStatement oPreparedStatement = null;
-                try {
-                    oPreparedStatement = oConnection.prepareStatement(strSQL);
-                    oPreparedStatement.setInt(1, idUsuario);
-                    oResultSet = oPreparedStatement.executeQuery();
-                    alFacturaBean = new ArrayList<FacturaBean>();
-                    while (oResultSet.next()) {
-                        FacturaBean oFacturaBean = new FacturaBean();
-                        oFacturaBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
-                        alFacturaBean.add(oFacturaBean);
-                    }
-                } catch (SQLException e) {
-                    throw new Exception("Error en Dao getpageXusuario de " + ob, e);
-                } finally {
-                    if (oResultSet != null) {
-                        oResultSet.close();
-                    }
-                    if (oPreparedStatement != null) {
-                        oPreparedStatement.close();
-                    }
-                }
-            } else {
-                throw new Exception("Error en Dao getpageXusuario de " + ob);
-            }
-            return alFacturaBean;
-        } else {
-            throw new Exception("Error en Dao getpageXusuario de " + ob + ": No autorizado");
-        }
-    }
+//
+//    public ArrayList<FacturaBean> getpageusuario(int iRpp, int iPage, HashMap<String, String> hmOrder, int idUsuario, Integer expand) throws Exception {
+//        if (idUsuario == oUsuarioBeanSession.getId()) {
+//            String strSQL = "SELECT * FROM " + ob;
+//            strSQL += SqlBuilder.buildSqlOrder(hmOrder);
+//            ArrayList<FacturaBean> alFacturaBean;
+//            if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
+//                strSQL += " WHERE id_usuario=? ";
+//                strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
+//                ResultSet oResultSet = null;
+//                PreparedStatement oPreparedStatement = null;
+//                try {
+//                    oPreparedStatement = oConnection.prepareStatement(strSQL);
+//                    oPreparedStatement.setInt(1, idUsuario);
+//                    oResultSet = oPreparedStatement.executeQuery();
+//                    alFacturaBean = new ArrayList<FacturaBean>();
+//                    while (oResultSet.next()) {
+//                        FacturaBean oFacturaBean = new FacturaBean();
+//                        oFacturaBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+//                        alFacturaBean.add(oFacturaBean);
+//                    }
+//                } catch (SQLException e) {
+//                    throw new Exception("Error en Dao getpageXusuario de " + ob, e);
+//                } finally {
+//                    if (oResultSet != null) {
+//                        oResultSet.close();
+//                    }
+//                    if (oPreparedStatement != null) {
+//                        oPreparedStatement.close();
+//                    }
+//                }
+//            } else {
+//                throw new Exception("Error en Dao getpageXusuario de " + ob);
+//            }
+//            return alFacturaBean;
+//        } else {
+//            throw new Exception("Error en Dao getpageXusuario de " + ob + ": No autorizado");
+//        }
+//    }
 
 //    @Override
 //    public int update(BeanInterface oBean) throws Exception {
 //        throw new Exception("Error en Dao update de " + ob + ": No autorizado");
 //    }
     @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
+    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo ) throws Exception {
         throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
 
     }
