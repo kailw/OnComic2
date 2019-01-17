@@ -58,26 +58,26 @@ public class FacturaService_2 extends GenericServiceImplementation implements Se
 //        return oReplyBean;
 //    }
 
-    public ReplyBean getpageusuario() throws Exception {
-        ReplyBean oReplyBean;
-        ConnectionInterface oConnectionPool = null;
-        Connection oConnection;
-        try {
-            Integer id_usuario = Integer.parseInt(oRequest.getParameter("id"));
-            Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
-            Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
-            HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
-            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-            oConnection = oConnectionPool.newConnection();
-            FacturaDao_2 oFacturaDao = (FacturaDao_2) DaoFactory.getDao(oConnection, ob, usuarioSession);
-            ArrayList<FacturaBean> alLineaBean = oFacturaDao.getpageusuario(iRpp, iPage, hmOrder, id_usuario, 1);
-            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            oReplyBean = new ReplyBean(200, oGson.toJson(alLineaBean));
-        } catch (Exception ex) {
-            throw new Exception("ERROR: Service level: getLineaFactura method: " + ob + " object" + ex.getMessage(), ex);
-        } finally {
-            oConnectionPool.disposeConnection();
-        }
-        return oReplyBean;
-    }
+//    public ReplyBean getpageusuario() throws Exception {
+//        ReplyBean oReplyBean;
+//        ConnectionInterface oConnectionPool = null;
+//        Connection oConnection;
+//        try {
+//            Integer id_usuario = Integer.parseInt(oRequest.getParameter("id"));
+//            Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
+//            Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
+//            HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
+//            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+//            oConnection = oConnectionPool.newConnection();
+//            FacturaDao_2 oFacturaDao = (FacturaDao_2) DaoFactory.getDao(oConnection, ob, usuarioSession);
+//            ArrayList<FacturaBean> alLineaBean = oFacturaDao.getpageusuario(iRpp, iPage, hmOrder, id_usuario, 1);
+//            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
+//            oReplyBean = new ReplyBean(200, oGson.toJson(alLineaBean));
+//        } catch (Exception ex) {
+//            throw new Exception("ERROR: Service level: getLineaFactura method: " + ob + " object" + ex.getMessage(), ex);
+//        } finally {
+//            oConnectionPool.disposeConnection();
+//        }
+//        return oReplyBean;
+//    }
 }
