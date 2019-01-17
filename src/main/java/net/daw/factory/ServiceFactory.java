@@ -465,8 +465,8 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oFacturaService.get();
                                 break;
-                            case "getpageusuario"://obtengo las facturas del usuario
-                                oReplyBean = oFacturaService.getpageusuario();
+                            case "getpage"://obtengo las facturas del usuario
+                                oReplyBean = oFacturaService.getpage();
                                 break;
                             case "getcount":
                                 oReplyBean = oFacturaService.getcount();
@@ -482,8 +482,8 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oLineaService.get();
                                 break;
-                            case "getlineafactura"://obtengo las lineas de la factura
-                                oReplyBean = oLineaService.getlineafactura();
+                            case "getpage"://obtengo las lineas de la factura
+                                oReplyBean = oLineaService.getpage();
                                 break;
                             case "getcount":
                                 oReplyBean = oLineaService.getcount();

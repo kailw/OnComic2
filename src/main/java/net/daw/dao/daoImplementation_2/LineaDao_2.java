@@ -83,11 +83,11 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
 
     @Override
     public int getcount(int id, String campo) throws Exception {       
-        if (id == oUsuarioBeanSession.getId()) {
+//        if (id == oUsuarioBeanSession.getId()) {
             return super.getcount(id, campo);
-        } else {
-            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
-        }
+//        } else {
+//            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+//        }
     }
 
     @Override
