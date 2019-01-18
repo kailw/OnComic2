@@ -11,11 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import net.daw.bean.beanImplementation.FacturaBean;
 import net.daw.bean.beanImplementation.LineaBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
 import net.daw.dao.publicDaoInterface.DaoInterface;
+import net.daw.factory.DaoFactory;
 
 /**
  *
@@ -40,7 +42,6 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
             throw new Exception("No existe " + ob);
         }
     }
-
 
 //    public ArrayList<LineaBean> getlineafactura(int iRpp, int iPage, int idFactura, Integer expand) throws Exception {
 //        String strSQL = "SELECT * FROM " + ob;
@@ -75,19 +76,20 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
 //        }
 //        return alLineaBean;
 //    }
-
     @Override
     public int remove(int id) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 
     @Override
-    public int getcount(int id, String campo) throws Exception {       
-//        if (id == oUsuarioBeanSession.getId()) {
+    public int getcount(int id, String campo) throws Exception {
+        FacturaDao_2 oDaoFactura = new FacturaDao_2(oConnection, "factura", oUsuarioBeanSession);
+        int idUsu = oDaoFactura.getIdusu(id, 0);
+        if (idUsu == oUsuarioBeanSession.getId()) {
             return super.getcount(id, campo);
-//        } else {
-//            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
-//        }
+        } else {
+            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+        }
     }
 
     @Override
@@ -99,5 +101,4 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
 //    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
 //        throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
 //    }
-
 }

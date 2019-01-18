@@ -56,12 +56,12 @@ public class GenericDaoImplementation implements DaoInterface {
 
     @Override
     public BeanInterface get(int id, Integer expand) throws Exception {
-        String strSQL = "SELECT * FROM " + ob + " WHERE id=?";
+//        String strSQL = "SELECT * FROM " + ob + " WHERE id=?";
         BeanInterface oBean;
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
-            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement = oConnection.prepareStatement(strSQL_get);
             oPreparedStatement.setInt(1, id);
             oResultSet = oPreparedStatement.executeQuery();
             if (oResultSet.next()) {
@@ -102,13 +102,13 @@ public class GenericDaoImplementation implements DaoInterface {
     }
 
     @Override
-    public int getcount(int id, String campo) throws Exception {
+    public int getcount(int idTabla, String campo) throws Exception {
         int res = 0;
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
-            if (id > 0) {
-                strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE " + campo + "=" + id;
+            if (idTabla > 0) {
+                strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE " + campo + "=" + idTabla;
             } else {
                 strSQL_getcount = "SELECT COUNT(id) FROM " + ob;
             }

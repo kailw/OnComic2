@@ -91,9 +91,9 @@ public class GenericServiceImplementation implements ServiceInterface {
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
-            Integer id = 0;
+            Integer id = 0;            
             if (oRequest.getParameter("id") != null) {
-                id = Integer.parseInt(oRequest.getParameter("id"));
+                id = Integer.parseInt(oRequest.getParameter("id"));               
             }
             String campo = oRequest.getParameter("campo");
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);

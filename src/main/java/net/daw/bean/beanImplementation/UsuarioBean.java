@@ -6,13 +6,8 @@
 package net.daw.bean.beanImplementation;
 
 import com.google.gson.annotations.Expose;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.daw.bean.genericBeanImplementation.GenericBeanImplementation;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.dao.publicDaoInterface.DaoInterface;

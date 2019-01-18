@@ -19,7 +19,7 @@ public interface DaoInterface {
 
     public int remove(int id) throws Exception;
 
-    public int getcount(int id, String campo) throws Exception;
+    public int getcount(int idTabla, String campo) throws Exception;
 
     public BeanInterface create(BeanInterface oBean) throws Exception;
 

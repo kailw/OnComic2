@@ -32,11 +32,39 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
             throw new Exception("No existe " + ob);
         }
     }
+    
+
+    public int getIdusu(int id, Integer expand) throws Exception {
+        String strSQL = "SELECT id_usuario FROM " + ob + " WHERE id=?";
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        int idUsu;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement.setInt(1, id);
+            oResultSet = oPreparedStatement.executeQuery();
+            if (oResultSet.next()) {
+                idUsu = oResultSet.getInt("id_usuario");
+            } else {
+                idUsu = 0;
+            }
+        }catch (SQLException e) {
+            throw new Exception("Error en Dao getIdusu de facturaDao_2", e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return idUsu;
+    }
 
     @Override
-    public int getcount(int id, String campo) throws Exception {
-        if (id == oUsuarioBeanSession.getId()) {
-            return super.getcount(id, campo);
+    public int getcount(int idTabla, String campo) throws Exception {
+        if (idTabla == oUsuarioBeanSession.getId()) {
+            return super.getcount(idTabla, campo);
         } else {
             throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
         }
@@ -81,7 +109,6 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
 //            throw new Exception("Error en Dao getpageXusuario de " + ob + ": No autorizado");
 //        }
 //    }
-
 //    @Override
 //    public int update(BeanInterface oBean) throws Exception {
 //        throw new Exception("Error en Dao update de " + ob + ": No autorizado");
