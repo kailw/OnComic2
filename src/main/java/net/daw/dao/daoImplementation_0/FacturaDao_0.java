@@ -25,25 +25,25 @@ public class FacturaDao_0 extends GenericDaoImplementation implements DaoInterfa
 //        }
     }
 
-    @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
-        throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
+//    @Override
+//    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
+//        throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
+//
+//    }
+//
+//    @Override
+//    public int remove(int id) throws Exception {
+//        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
+//    }
 
-    }
-
-    @Override
-    public int remove(int id) throws Exception {
-        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
-    }
-
-    @Override
-    public int getcount(int idTabla, String campo)  throws Exception {
-        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
-    }
-
-    @Override
-    public BeanInterface create(BeanInterface oBean) throws Exception {
-        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
-    }
+//    @Override
+//    public int getcount(int idTabla, String campo)  throws Exception {
+//        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
+//    }
+//
+//    @Override
+//    public BeanInterface create(BeanInterface oBean) throws Exception {
+//        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
+//    }
 
 }

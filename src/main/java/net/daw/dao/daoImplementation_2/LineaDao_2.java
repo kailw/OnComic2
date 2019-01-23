@@ -83,12 +83,16 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
 
     @Override
     public int getcount(int id, String campo) throws Exception {
-        FacturaDao_2 oDaoFactura = new FacturaDao_2(oConnection, "factura", oUsuarioBeanSession);
-        int idUsu = oDaoFactura.getIdusu(id, 0);
-        if (idUsu == oUsuarioBeanSession.getId()) {
-            return super.getcount(id, campo);
+        if (campo.equalsIgnoreCase("id_factura")) {
+            FacturaDao_2 oDaoFactura = new FacturaDao_2(oConnection, "factura", oUsuarioBeanSession);
+            int idUsu = oDaoFactura.getIdusu(id, 0);
+            if (idUsu == oUsuarioBeanSession.getId()) {
+                return super.getcount(id, campo);
+            } else {
+                throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+            }
         } else {
-            throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
+            return super.getcount(id, campo);
         }
     }
 

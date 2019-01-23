@@ -91,9 +91,9 @@ public class GenericServiceImplementation implements ServiceInterface {
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
-            Integer id = 0;            
+            Integer id = 0;
             if (oRequest.getParameter("id") != null) {
-                id = Integer.parseInt(oRequest.getParameter("id"));               
+                id = Integer.parseInt(oRequest.getParameter("id"));
             }
             String campo = oRequest.getParameter("campo");
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
@@ -166,9 +166,9 @@ public class GenericServiceImplementation implements ServiceInterface {
             Integer iPage = 0;
             if (oRequest.getParameter("id") != null) {
                 idAjena = Integer.parseInt(oRequest.getParameter("id"));
+                iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
+                iPage = Integer.parseInt(oRequest.getParameter("page"));
             }
-            iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
-            iPage = Integer.parseInt(oRequest.getParameter("page"));
             String campo = oRequest.getParameter("campo");
             HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);

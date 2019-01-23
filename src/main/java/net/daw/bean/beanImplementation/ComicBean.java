@@ -57,6 +57,9 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
 
     @Expose
     private String foto;
+    
+    @Expose(deserialize = false)
+    private int numVendidos;
 
     @Expose(serialize = false)
     private int id_coleccion;

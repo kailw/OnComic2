@@ -146,10 +146,13 @@ public class DaoFactory {
                         break;
                 }
                 break;
-            case 0:
+                        case 0:
                 switch (ob) {
                     case "usuario":
                         oDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "tipousuario":
+                        oDao = new TipousuarioDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
                     case "comic":
                         oDao = new ComicDao_0(oConnection, ob, oUsuarioBeanSession);
@@ -162,27 +165,6 @@ public class DaoFactory {
                         break;
                     case "linea":
                         oDao = new LineaDao_0(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "genero":
-                        oDao = new GeneroDao_2(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "editorial":
-                        oDao = new EditorialDao_2(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "autor":
-                        oDao = new AutorDao_2(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "comicgenero":
-                        oDao = new ComicGeneroDao_2(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "comiceditorial":
-                        oDao = new ComicEditorialDao_2(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "autorespecialidad":
-                        oDao = new AutorEspecialidadDao_2(oConnection, ob, oUsuarioBeanSession);
-                        break;
-                    case "especialidad":
-                        oDao = new EspecialidadDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
                 }
                 break;
