@@ -24,9 +24,11 @@ import net.daw.dao.daoImplementation_1.AutorEspecialidadDao_1;
 import net.daw.dao.daoImplementation_1.ColeccionDao_1;
 import net.daw.dao.daoImplementation_1.ComicEditorialDao_1;
 import net.daw.dao.daoImplementation_1.ComicGeneroDao_1;
+import net.daw.dao.daoImplementation_1.ComicIdiomaDao_1;
 import net.daw.dao.daoImplementation_1.EditorialDao_1;
 import net.daw.dao.daoImplementation_1.EspecialidadDao_1;
 import net.daw.dao.daoImplementation_1.GeneroDao_1;
+import net.daw.dao.daoImplementation_1.IdiomaDao_1;
 import net.daw.dao.daoImplementation_2.AutorDao_2;
 import net.daw.dao.daoImplementation_2.AutorEspecialidadDao_2;
 import net.daw.dao.daoImplementation_2.ColeccionDao_2;
@@ -62,6 +64,12 @@ public class DaoFactory {
                         break;
                     case "comic":
                         oDao = new ComicDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "idioma":
+                        oDao = new IdiomaDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comicidioma":
+                        oDao = new ComicIdiomaDao_1(oConnection, ob, oUsuarioBeanSession);
                         break;
                     case "genero":
                         oDao = new GeneroDao_1(oConnection, ob, oUsuarioBeanSession);
@@ -143,9 +151,6 @@ public class DaoFactory {
                     case "usuario":
                         oDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
-                    case "tipousuario":
-                        oDao = new TipousuarioDao_0(oConnection, ob, oUsuarioBeanSession);
-                        break;
                     case "comic":
                         oDao = new ComicDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
@@ -157,6 +162,27 @@ public class DaoFactory {
                         break;
                     case "linea":
                         oDao = new LineaDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "genero":
+                        oDao = new GeneroDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "editorial":
+                        oDao = new EditorialDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "autor":
+                        oDao = new AutorDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comicgenero":
+                        oDao = new ComicGeneroDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comiceditorial":
+                        oDao = new ComicEditorialDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "autorespecialidad":
+                        oDao = new AutorEspecialidadDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "especialidad":
+                        oDao = new EspecialidadDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
                 }
                 break;

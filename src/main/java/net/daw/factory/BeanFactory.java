@@ -14,9 +14,11 @@ import net.daw.bean.beanImplementation.LineaBean;
 import net.daw.bean.beanImplementation.ComicBean;
 import net.daw.bean.beanImplementation.ComicEditorialBean;
 import net.daw.bean.beanImplementation.ComicGeneroBean;
+import net.daw.bean.beanImplementation.ComicIdiomaBean;
 import net.daw.bean.beanImplementation.EditorialBean;
 import net.daw.bean.beanImplementation.EspecialidadBean;
 import net.daw.bean.beanImplementation.GeneroBean;
+import net.daw.bean.beanImplementation.IdiomaBean;
 import net.daw.bean.beanImplementation.TipousuarioBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
@@ -38,6 +40,12 @@ public class BeanFactory {
                 break;
             case "comic":
                 oBean = new ComicBean();
+                break;
+            case "idioma":
+                oBean = new IdiomaBean();
+                break;
+            case "comicidioma":
+                oBean = new ComicIdiomaBean();
                 break;
             case "genero":
                 oBean = new GeneroBean();
@@ -84,6 +92,12 @@ public class BeanFactory {
                 break;
             case "comic":
                 oBean = oGson.fromJson(strJsonFromClient, ComicBean.class);
+                break;
+            case "idioma":
+                oBean = oGson.fromJson(strJsonFromClient, IdiomaBean.class);
+                break;
+            case "comicidioma":
+                oBean = oGson.fromJson(strJsonFromClient, ComicIdiomaBean.class);
                 break;
             case "genero":
                 oBean = oGson.fromJson(strJsonFromClient, GeneroBean.class);
