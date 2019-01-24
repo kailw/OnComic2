@@ -54,7 +54,7 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
     }
 
     @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
+    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 

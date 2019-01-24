@@ -79,8 +79,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oTipousuarioService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oTipousuarioService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oTipousuarioService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -117,8 +117,8 @@ public class ServiceFactory {
                             case "check":
                                 oReplyBean = oUsuarioService1.check();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oUsuarioService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oUsuarioService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -146,8 +146,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oFacturaService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oFacturaService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oFacturaService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -175,8 +175,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oLineaService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oLineaService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oLineaService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -211,8 +211,8 @@ public class ServiceFactory {
                             case "loadimage":
                                 oReplyBean = oComicService1.addimage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oComicService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oComicService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -240,8 +240,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oGeneroService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oGeneroService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oGeneroService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -269,8 +269,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oEditorialService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oEditorialService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oEditorialService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -298,8 +298,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oColeccionService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oColeccionService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oColeccionService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -327,8 +327,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oAutorService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oAutorService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oAutorService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -356,8 +356,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oComicGeneroService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oComicGeneroService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oComicGeneroService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -385,8 +385,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oComicEditorialService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oComicEditorialService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oComicEditorialService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -414,8 +414,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oEspecialidadService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oEspecialidadService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oEspecialidadService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -443,8 +443,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oAutorEspecialidadService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oAutorEspecialidadService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oAutorEspecialidadService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -472,8 +472,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oIdiomaService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oIdiomaService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oIdiomaService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -501,8 +501,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oComicIdiomaService1.getpage();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oComicIdiomaService1.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oComicIdiomaService1.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -554,8 +554,8 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oFacturaService2.get();
                                 break;
-                            case "getpage"://obtengo las facturas del usuario
-                                oReplyBean = oFacturaService2.getpage();
+                            case "getpagex"://obtengo las facturas del usuario
+                                oReplyBean = oFacturaService2.getpageX();
                                 break;
                             case "getcount":
                                 oReplyBean = oFacturaService2.getcount();
@@ -571,8 +571,8 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oLineaService2.get();
                                 break;
-                            case "getpage"://obtengo las lineas de la factura
-                                oReplyBean = oLineaService2.getpage();
+                            case "getpagex"://obtengo las lineas de la factura
+                                oReplyBean = oLineaService2.getpageX();
                                 break;
                             case "getcount":
                                 oReplyBean = oLineaService2.getcount();
@@ -594,8 +594,8 @@ public class ServiceFactory {
                             case "getcount":
                                 oReplyBean = oComicService2.getcount();
                                 break;
-                            case "getpageall":
-                                oReplyBean = oComicService2.getpageAll();
+                            case "getpagex":
+                                oReplyBean = oComicService2.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -613,9 +613,6 @@ public class ServiceFactory {
                                 break;
                             case "getpage":
                                 oReplyBean = oGeneroService2.getpage();
-                                break;
-                            case "getpageall":
-                                oReplyBean = oGeneroService2.getpageAll();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -685,6 +682,9 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oComicGeneroService2.getpage();
                                 break;
+                            case "getpagex":
+                                oReplyBean = oComicGeneroService2.getpageX();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
@@ -702,6 +702,9 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oComicEditorialService2.getpage();
                                 break;
+                            case "getpagex":
+                                oReplyBean = oComicEditorialService2.getpageX();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
@@ -718,6 +721,9 @@ public class ServiceFactory {
                                 break;
                             case "getpage":
                                 oReplyBean = oAutorEspecialidadService2.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oAutorEspecialidadService2.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

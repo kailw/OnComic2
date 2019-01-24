@@ -114,9 +114,9 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
 //        throw new Exception("Error en Dao update de " + ob + ": No autorizado");
 //    }
     @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
+    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
         if (idAjena == oUsuarioBeanSession.getId()) {
-            return super.getpage(iRpp, iPage, hmOrder, expand, idAjena, campo);
+            return super.getpageX(iRpp, iPage, hmOrder, expand, idAjena, campo);
         } else {
             throw new Exception("Error en Dao getpageXusuario de " + ob + ": No autorizado");
         }

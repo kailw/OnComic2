@@ -36,10 +36,7 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
 
     @Expose
     private Date fechapublicacion;
-
-    @Expose
-    private String idioma;
-
+    
     @Expose
     private int pagina;
 
@@ -97,14 +94,6 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
 
     public void setFechapublicacion(Date fechapublicacion) {
         this.fechapublicacion = fechapublicacion;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
     }
 
     public int getPagina() {
@@ -177,14 +166,13 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         this.setTitulo(oResultSet.getString("titulo"));
         this.setDesc(oResultSet.getString("desc"));
         this.setIsbn(oResultSet.getString("isbn"));
-        this.setFechapublicacion(oResultSet.getDate("fechapublicacion"));
-        this.setIdioma(oResultSet.getString("idioma"));
+        this.setFechapublicacion(oResultSet.getDate("fechapublicacion"));        
         this.setPagina(oResultSet.getInt("pagina"));
         this.setColor(oResultSet.getBoolean("color"));
         this.setExistencias(oResultSet.getInt("existencias"));
         this.setPrecio(oResultSet.getFloat("precio"));
         this.setDescuento(oResultSet.getFloat("descuento"));
-        this.setFoto(oResultSet.getString("foto"));
+        this.setFoto(oResultSet.getString("imagen"));
 
         if (expand > 0) {
             DaoInterface ocoleccionDao = DaoFactory.getDao(oConnection, "coleccion", oUsuarioBeanSession);
@@ -203,8 +191,7 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         strColumns += "titulo,";
         strColumns += "`desc`,";
         strColumns += "isbn,";
-        strColumns += "fechapublicacion,";
-        strColumns += "idioma,";
+        strColumns += "fechapublicacion,";        
         strColumns += "pagina,";
         strColumns += "color,";
         strColumns += "existencias,";
@@ -227,8 +214,7 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         strColumns += EncodingHelper.quotate(titulo) + ",";
         strColumns += EncodingHelper.quotate(desc) + ",";
         strColumns += EncodingHelper.quotate(isbn) + ",";
-        strColumns += EncodingHelper.quotate(localDate.toString()) + ",";
-        strColumns += EncodingHelper.quotate(idioma) + ",";
+        strColumns += EncodingHelper.quotate(localDate.toString()) + ",";       
         strColumns += pagina + ",";
         strColumns += color + ",";
         strColumns += existencias + ",";
@@ -253,8 +239,7 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         strPairs += "titulo=" + EncodingHelper.quotate(titulo) + ",";
         strPairs += "`desc`=" + EncodingHelper.quotate(desc) + ",";
         strPairs += "isbn=" + EncodingHelper.quotate(isbn) + ",";
-        strPairs += "fechapublicacion=" + EncodingHelper.quotate(localDateTime.toString()) + ",";
-        strPairs += "idioma=" + EncodingHelper.quotate(idioma) + ",";
+        strPairs += "fechapublicacion=" + EncodingHelper.quotate(localDateTime.toString()) + ",";     
         strPairs += "pagina=" + pagina + ",";
         strPairs += "color=" + color + ",";
         strPairs += "existencias=" + existencias + ",";
