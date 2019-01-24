@@ -19,7 +19,7 @@ public interface ServiceInterface {
 
     public ReplyBean getcount() throws Exception;
     
-//    public ReplyBean getcountX() throws Exception;
+    public ReplyBean getpageAll() throws Exception;
 
     public ReplyBean create() throws Exception;
 

@@ -160,21 +160,41 @@ public class GenericServiceImplementation implements ServiceInterface {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
+        int idAjena, iRpp, iPage;
         try {
-            Integer idAjena = 0;
-            Integer iRpp = 0;
-            Integer iPage = 0;
+            idAjena = 0;
             if (oRequest.getParameter("id") != null) {
                 idAjena = Integer.parseInt(oRequest.getParameter("id"));
-                iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
-                iPage = Integer.parseInt(oRequest.getParameter("page"));
             }
+            iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
+            iPage = Integer.parseInt(oRequest.getParameter("page"));
             String campo = oRequest.getParameter("campo");
             HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
             ArrayList<BeanInterface> alBean = oDao.getpage(iRpp, iPage, hmOrder, 1, idAjena, campo);
+            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
+            oReplyBean = new ReplyBean(200, oGson.toJson(alBean));
+        } catch (Exception ex) {
+            throw new Exception("ERROR: Service level: getpage method: " + ob + " object", ex);
+        } finally {
+            oConnectionPool.disposeConnection();
+        }
+        return oReplyBean;
+    }
+
+    @Override
+    public ReplyBean getpageAll() throws Exception {
+        ReplyBean oReplyBean;
+        ConnectionInterface oConnectionPool = null;
+        Connection oConnection;
+        try {
+            HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
+            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+            oConnection = oConnectionPool.newConnection();
+            DaoInterface oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
+            ArrayList<BeanInterface> alBean = oDao.getpageAll(hmOrder, 1);
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oReplyBean = new ReplyBean(200, oGson.toJson(alBean));
         } catch (Exception ex) {

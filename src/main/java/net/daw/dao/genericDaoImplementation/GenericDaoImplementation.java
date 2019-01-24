@@ -182,22 +182,16 @@ public class GenericDaoImplementation implements DaoInterface {
 
     @Override
     public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
-        String strSQL = null;
-        if (campo.equalsIgnoreCase("todo")) {
-            strSQL = "SELECT * FROM " + ob;
+        String strSQL = "";
+        strSQL = "SELECT * FROM " + ob;
+        if (idAjena > 0) {
+            strSQL += " WHERE " + campo + "=" + idAjena;
             strSQL += SqlBuilder.buildSqlOrder(hmOrder);
-        } else {
-            strSQL = "SELECT * FROM " + ob;
-            strSQL += SqlBuilder.buildSqlOrder(hmOrder);
-            if (idAjena > 0) {
-                strSQL += " WHERE " + campo + "=" + idAjena;
-            } else {
-                strSQL += "";
-            }
             strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
+        } else {
+            strSQL += " GROUP BY " + campo + " ORDER BY SUM(cantidad) DESC LIMIT 0, 10";
         }
         ArrayList<BeanInterface> alBean;
-
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
@@ -219,7 +213,35 @@ public class GenericDaoImplementation implements DaoInterface {
                 oPreparedStatement.close();
             }
         }
+        return alBean;
+    }
 
+    @Override
+    public ArrayList<BeanInterface> getpageAll(HashMap<String, String> hmOrder, Integer expand) throws Exception {
+        String strSQL = "SELECT * FROM " + ob;
+        strSQL += SqlBuilder.buildSqlOrder(hmOrder);
+        ArrayList<BeanInterface> alBean;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oResultSet = oPreparedStatement.executeQuery();
+            alBean = new ArrayList<BeanInterface>();
+            while (oResultSet.next()) {
+                BeanInterface oBean = BeanFactory.getBean(ob);
+                oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+                alBean.add(oBean);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao getpage de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
         return alBean;
     }
 }
