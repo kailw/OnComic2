@@ -90,8 +90,8 @@ public class AutorEspecialidadBean extends GenericBeanImplementation implements 
         this.setId(oResultSet.getInt("id"));
 
         if (expand > 0) {
-            DaoInterface oeditorialDao = DaoFactory.getDao(oConnection, "especialidad", oUsuarioBeanSession);
-            this.setObj_especialidad((EspecialidadBean) oeditorialDao.get(oResultSet.getInt("id_especialidad"), expand - 1));
+            DaoInterface oespecialidadDao = DaoFactory.getDao(oConnection, "especialidad", oUsuarioBeanSession);
+            this.setObj_especialidad((EspecialidadBean) oespecialidadDao.get(oResultSet.getInt("id_especialidad"), expand - 1));
         } else {
             this.setId_especialidad(oResultSet.getInt("id_especialidad"));
         }

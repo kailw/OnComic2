@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 24-01-2019 a las 11:51:08
+-- Tiempo de generación: 24-01-2019 a las 11:13:35
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.21
 
@@ -38,7 +38,9 @@ CREATE TABLE `autor` (
 --
 
 INSERT INTO `autor` (`id`, `nombre`) VALUES
-(1, 'Aloon Moore');
+(1, 'Alan Moore'),
+(2, 'Ben Oliver'),
+(3, 'Gardner Fox');
 
 -- --------------------------------------------------------
 
@@ -48,10 +50,18 @@ INSERT INTO `autor` (`id`, `nombre`) VALUES
 
 CREATE TABLE `autorespecialidad` (
   `id` int(11) NOT NULL,
-  `especialidad_id` int(11) DEFAULT NULL,
+  `id_especialidad` int(11) DEFAULT NULL,
   `id_autor` int(11) DEFAULT NULL,
   `id_comic` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `autorespecialidad`
+--
+
+INSERT INTO `autorespecialidad` (`id`, `id_especialidad`, `id_autor`, `id_comic`) VALUES
+(1, 2, 1, 1),
+(2, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -69,8 +79,8 @@ CREATE TABLE `coleccion` (
 --
 
 INSERT INTO `coleccion` (`id`, `desc`) VALUES
-(1, 'BATMAN SLAIN'),
-(2, 'IRON MAN TECH');
+(1, 'Batman el valiente'),
+(2, 'IRON MAN pobre');
 
 -- --------------------------------------------------------
 
@@ -84,13 +94,13 @@ CREATE TABLE `comic` (
   `desc` varchar(255) NOT NULL,
   `isbn` varchar(255) NOT NULL,
   `fechapublicacion` datetime NOT NULL,
+  `idioma` varchar(255) NOT NULL,
   `pagina` int(11) NOT NULL,
   `color` tinyint(1) NOT NULL,
   `existencias` int(11) NOT NULL,
   `precio` float NOT NULL,
   `descuento` float DEFAULT NULL,
-  `imagen` varchar(255) DEFAULT NULL,
-  `destacado` tinyint(1) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `id_coleccion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -98,9 +108,9 @@ CREATE TABLE `comic` (
 -- Volcado de datos para la tabla `comic`
 --
 
-INSERT INTO `comic` (`id`, `titulo`, `desc`, `isbn`, `fechapublicacion`, `pagina`, `color`, `existencias`, `precio`, `descuento`, `imagen`, `destacado`, `id_coleccion`) VALUES
-(2, 'Batman', 'Un tipo con un disfraz muy malo', '14545646454561-T', '2019-01-18 00:00:12', 14, 1, 25, 6.15, NULL, 'batman.jpg', 0, 1),
-(3, 'IRON MAN', 'Un tipo con traje molon', '123456789-T', '2019-01-25 00:03:00', 23, 0, 40, 2, 0, 'batman.jog', 0, 2);
+INSERT INTO `comic` (`id`, `titulo`, `desc`, `isbn`, `fechapublicacion`, `idioma`, `pagina`, `color`, `existencias`, `precio`, `descuento`, `foto`, `id_coleccion`) VALUES
+(1, 'BATMAN', 'hola soy batman', '1245535477-N', '2019-01-16 00:00:00', 'Español', 12, 1, 23, 5.25, 0, 'batman.jpg', 1),
+(2, 'IRON MAN ', 'iron solo tiene un traje', '125558878K', '2019-01-24 00:00:00', 'Castellano', 15, 0, 16, 6.15, NULL, 'ironman.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -119,7 +129,8 @@ CREATE TABLE `comiceditorial` (
 --
 
 INSERT INTO `comiceditorial` (`id`, `id_editorial`, `id_comic`) VALUES
-(1, 1, 3);
+(1, 1, 1),
+(2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -133,24 +144,14 @@ CREATE TABLE `comicgenero` (
   `id_comic` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `comicidioma`
+-- Volcado de datos para la tabla `comicgenero`
 --
 
-CREATE TABLE `comicidioma` (
-  `id` int(11) NOT NULL,
-  `id_comic` int(11) DEFAULT NULL,
-  `id_idioma` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `comicidioma`
---
-
-INSERT INTO `comicidioma` (`id`, `id_comic`, `id_idioma`) VALUES
-(1, 2, 1);
+INSERT INTO `comicgenero` (`id`, `id_genero`, `id_comic`) VALUES
+(1, 2, 1),
+(2, 2, 2),
+(5, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -168,8 +169,8 @@ CREATE TABLE `editorial` (
 --
 
 INSERT INTO `editorial` (`id`, `desc`) VALUES
-(1, 'MARVEL'),
-(2, 'DCOMICS');
+(1, 'DComics'),
+(2, 'Marvel');
 
 -- --------------------------------------------------------
 
@@ -187,7 +188,9 @@ CREATE TABLE `especialidad` (
 --
 
 INSERT INTO `especialidad` (`id`, `desc`) VALUES
-(1, 'DIBUJANTE');
+(1, 'Guionista'),
+(2, 'Dibujante'),
+(4, 'Autor');
 
 -- --------------------------------------------------------
 
@@ -207,7 +210,10 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`id`, `fecha`, `iva`, `id_usuario`) VALUES
-(1, '2019-01-04 00:00:00', 21, 1);
+(1, '2019-01-18 00:00:00', 21, 1),
+(2, '2019-01-03 00:00:00', 21, 2),
+(8, '2019-01-15 00:00:00', 21, 2),
+(9, '2019-01-02 00:00:00', 22, 1);
 
 -- --------------------------------------------------------
 
@@ -225,27 +231,8 @@ CREATE TABLE `genero` (
 --
 
 INSERT INTO `genero` (`id`, `desc`) VALUES
-(1, 'INFANTIL'),
-(2, 'SUPERHEROE');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `idioma`
---
-
-CREATE TABLE `idioma` (
-  `id` int(11) NOT NULL,
-  `desc` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `idioma`
---
-
-INSERT INTO `idioma` (`id`, `desc`) VALUES
-(1, 'Castellano'),
-(2, 'Inglés');
+(1, 'Infantil'),
+(2, 'SuperHéroe');
 
 -- --------------------------------------------------------
 
@@ -259,6 +246,19 @@ CREATE TABLE `linea` (
   `id_comic` int(11) DEFAULT NULL,
   `id_factura` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `linea`
+--
+
+INSERT INTO `linea` (`id`, `cantidad`, `id_comic`, `id_factura`) VALUES
+(1, '2', 1, 1),
+(2, '2', 2, 1),
+(3, '2', 2, 2),
+(4, '2', 1, 2),
+(10, '1', 1, 8),
+(11, '1', 2, 9),
+(12, '1', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -304,8 +304,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `dni`, `nombre`, `ape1`, `ape2`, `login`, `pass`, `email`, `id_tipousuario`, `token`, `validacion`) VALUES
-(1, '24465169T', 'kevin', 'dominguez', 'sisalima', 'kevin', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'kevin@gmailcom', 1, '1df4d5fdadfa5a6s5df4as6d5fas4dfr8r787fr', 1),
-(2, '224465170R', 'cliente', 'cliente', 'cliente', 'cliente', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'cliente@gmail.com', 2, 'd1f2asd1f2asdf1as2df45asd4f65a4sdf5asdf1', 1);
+(1, '24465169T', 'Kevin', 'Domínguez', 'Sisalima', 'kevin', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'kevin@gmail.com', 1, '1asd2df4d51f2asdr34af4s5d4fa35dsf4', 1),
+(2, '458988854T', 'Cliente', 'Cliente', 'Cliente', 'cliente', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'cliente@gmail.com', 2, '1212132121212F', 1),
+(50, 'TTTTTTTTTT', 'PRUEBA6', 'PRUEBA3', 'PRUEBA3', 'prueba', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'prueba@gmail.com', 2, '[B@5ee30cce', 1),
+(51, 'TTTTTTTTTT', 'PRUEBA6', 'PRUEBA3', 'PRUEBA3', 'prueba', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'prueba@gmail.com', 2, '[B@687ce156', 1),
+(52, 'TTTTTTTTTT', 'PRUEBA6', 'PRUEBA3', 'PRUEBA3', 'prueba', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'prueba@gmail.com', 2, '[B@49ced47a', 1),
+(53, 'TTTTTTTTTT', 'PRUEBA6', 'PRUEBA3', 'PRUEBA3', 'prueba', 'B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79', 'prueba@gmail.com', 2, '[B@5e223e8e', 1);
 
 --
 -- Índices para tablas volcadas
@@ -322,7 +326,7 @@ ALTER TABLE `autor`
 --
 ALTER TABLE `autorespecialidad`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_autorespecialidad_especialidad1_idx` (`especialidad_id`),
+  ADD KEY `fk_autorespecialidad_especialidad1_idx` (`id_especialidad`),
   ADD KEY `fk_autorespecialidad_autor1_idx` (`id_autor`),
   ADD KEY `fk_autorespecialidad_comic1_idx` (`id_comic`);
 
@@ -357,14 +361,6 @@ ALTER TABLE `comicgenero`
   ADD KEY `fk_comicgenero_comic1_idx` (`id_comic`);
 
 --
--- Indices de la tabla `comicidioma`
---
-ALTER TABLE `comicidioma`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_comicidioma_comic1_idx` (`id_comic`),
-  ADD KEY `fk_comicidioma_idioma1_idx` (`id_idioma`);
-
---
 -- Indices de la tabla `editorial`
 --
 ALTER TABLE `editorial`
@@ -387,12 +383,6 @@ ALTER TABLE `factura`
 -- Indices de la tabla `genero`
 --
 ALTER TABLE `genero`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `idioma`
---
-ALTER TABLE `idioma`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -424,13 +414,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `autorespecialidad`
 --
 ALTER TABLE `autorespecialidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `coleccion`
@@ -442,25 +432,19 @@ ALTER TABLE `coleccion`
 -- AUTO_INCREMENT de la tabla `comic`
 --
 ALTER TABLE `comic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `comiceditorial`
 --
 ALTER TABLE `comiceditorial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `comicgenero`
 --
 ALTER TABLE `comicgenero`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `comicidioma`
---
-ALTER TABLE `comicidioma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `editorial`
@@ -472,13 +456,13 @@ ALTER TABLE `editorial`
 -- AUTO_INCREMENT de la tabla `especialidad`
 --
 ALTER TABLE `especialidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -487,16 +471,10 @@ ALTER TABLE `genero`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '\n	', AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `idioma`
---
-ALTER TABLE `idioma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de la tabla `linea`
 --
 ALTER TABLE `linea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tipousuario`
@@ -508,7 +486,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Restricciones para tablas volcadas
@@ -520,13 +498,13 @@ ALTER TABLE `usuario`
 ALTER TABLE `autorespecialidad`
   ADD CONSTRAINT `fk_autorespecialidad_autor1` FOREIGN KEY (`id_autor`) REFERENCES `autor` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_autorespecialidad_comic1` FOREIGN KEY (`id_comic`) REFERENCES `comic` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_autorespecialidad_especialidad1` FOREIGN KEY (`especialidad_id`) REFERENCES `especialidad` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_autorespecialidad_especialidad1` FOREIGN KEY (`id_especialidad`) REFERENCES `especialidad` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `comic`
 --
 ALTER TABLE `comic`
-  ADD CONSTRAINT `fk_comic_coleccion1` FOREIGN KEY (`id_coleccion`) REFERENCES `coleccion` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_comic_coleccion1` FOREIGN KEY (`id_coleccion`) REFERENCES `coleccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `comiceditorial`
@@ -541,13 +519,6 @@ ALTER TABLE `comiceditorial`
 ALTER TABLE `comicgenero`
   ADD CONSTRAINT `fk_comicgenero_comic1` FOREIGN KEY (`id_comic`) REFERENCES `comic` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_comicgenero_genero1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `comicidioma`
---
-ALTER TABLE `comicidioma`
-  ADD CONSTRAINT `fk_comicidioma_comic1` FOREIGN KEY (`id_comic`) REFERENCES `comic` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_comicidioma_idioma1` FOREIGN KEY (`id_idioma`) REFERENCES `idioma` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `factura`

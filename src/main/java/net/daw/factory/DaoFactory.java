@@ -34,9 +34,11 @@ import net.daw.dao.daoImplementation_2.AutorEspecialidadDao_2;
 import net.daw.dao.daoImplementation_2.ColeccionDao_2;
 import net.daw.dao.daoImplementation_2.ComicEditorialDao_2;
 import net.daw.dao.daoImplementation_2.ComicGeneroDao_2;
+import net.daw.dao.daoImplementation_2.ComicIdiomaDao_2;
 import net.daw.dao.daoImplementation_2.EditorialDao_2;
 import net.daw.dao.daoImplementation_2.EspecialidadDao_2;
 import net.daw.dao.daoImplementation_2.GeneroDao_2;
+import net.daw.dao.daoImplementation_2.IdiomaDao_2;
 
 /**
  *
@@ -114,6 +116,12 @@ public class DaoFactory {
                     case "comic":
                         oDao = new ComicDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
+                    case "idioma":
+                        oDao = new IdiomaDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comicidioma":
+                        oDao = new ComicIdiomaDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
                     case "factura":
                         oDao = new FacturaDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
@@ -146,7 +154,7 @@ public class DaoFactory {
                         break;
                 }
                 break;
-                        case 0:
+            case 0:
                 switch (ob) {
                     case "usuario":
                         oDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
@@ -159,6 +167,27 @@ public class DaoFactory {
                         break;
                     case "coleccion":
                         oDao = new ColeccionDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "genero":
+                        oDao = new GeneroDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "autor":
+                        oDao = new AutorDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "editorial":
+                        oDao = new EditorialDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comicgenero":
+                        oDao = new ComicGeneroDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comiceditorial":
+                        oDao = new ComicEditorialDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "autorespecialidad":
+                        oDao = new AutorEspecialidadDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "especialidad":
+                        oDao = new EspecialidadDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
                     case "factura":
                         oDao = new FacturaDao_0(oConnection, ob, oUsuarioBeanSession);

@@ -4,7 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
+import net.daw.service.serviceImplementation_0.AutorEspecialidadService_0;
+import net.daw.service.serviceImplementation_0.AutorService_0;
+import net.daw.service.serviceImplementation_0.ColeccionService_0;
+import net.daw.service.serviceImplementation_0.ComicEditorialService_0;
+import net.daw.service.serviceImplementation_0.ComicGeneroService_0;
 import net.daw.service.serviceImplementation_0.ComicService_0;
+import net.daw.service.serviceImplementation_0.EditorialService_0;
+import net.daw.service.serviceImplementation_0.GeneroService_0;
 import net.daw.service.serviceImplementation_0.UsuarioService_0;
 import net.daw.service.serviceImplementation_1.AutorEspecialidadService_1;
 import net.daw.service.serviceImplementation_1.AutorService_1;
@@ -773,6 +780,46 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
+                    case "idioma":
+                        IdiomaService_2 oIdiomaService2 = new IdiomaService_2(oRequest, ob);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oIdiomaService2.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oIdiomaService2.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oIdiomaService2.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oIdiomaService2.getpageX();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "comicidioma":
+                        ComicIdiomaService_2 oComicIdiomaService2 = new ComicIdiomaService_2(oRequest, ob);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oComicIdiomaService2.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oComicIdiomaService2.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oComicIdiomaService2.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oComicIdiomaService2.getpageX();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
@@ -807,6 +854,9 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oComicService0.getpage();
                                 break;
+                            case "getpagex":
+                                oReplyBean = oComicService0.getpageX();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
@@ -824,16 +874,16 @@ public class ServiceFactory {
                         }
                         break;
                     case "genero":
-                        GeneroService_2 oGeneroService2 = new GeneroService_2(oRequest, ob);
+                        GeneroService_0 oGeneroService0 = new GeneroService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oGeneroService2.get();
+                                oReplyBean = oGeneroService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oGeneroService2.getcount();
+                                oReplyBean = oGeneroService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oGeneroService2.getpage();
+                                oReplyBean = oGeneroService0.getpage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -841,16 +891,16 @@ public class ServiceFactory {
                         }
                         break;
                     case "editorial":
-                        EditorialService_2 oEditorialService2 = new EditorialService_2(oRequest, ob);
+                        EditorialService_0 oEditorialService0 = new EditorialService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oEditorialService2.get();
+                                oReplyBean = oEditorialService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oEditorialService2.getcount();
+                                oReplyBean = oEditorialService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oEditorialService2.getpage();
+                                oReplyBean = oEditorialService0.getpage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -858,16 +908,16 @@ public class ServiceFactory {
                         }
                         break;
                     case "coleccion":
-                        ColeccionService_2 oColeccionService2 = new ColeccionService_2(oRequest, ob);
+                        ColeccionService_0 oColeccionService0 = new ColeccionService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oColeccionService2.get();
+                                oReplyBean = oColeccionService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oColeccionService2.getcount();
+                                oReplyBean = oColeccionService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oColeccionService2.getpage();
+                                oReplyBean = oColeccionService0.getpage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -875,16 +925,16 @@ public class ServiceFactory {
                         }
                         break;
                     case "autor":
-                        AutorService_2 oAutorService2 = new AutorService_2(oRequest, ob);
+                        AutorService_0 oAutorService0 = new AutorService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oAutorService2.get();
+                                oReplyBean = oAutorService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oAutorService2.getcount();
+                                oReplyBean = oAutorService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oAutorService2.getpage();
+                                oReplyBean = oAutorService0.getpage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -892,33 +942,40 @@ public class ServiceFactory {
                         }
                         break;
                     case "comicgenero":
-                        ComicGeneroService_2 oComicGeneroService2 = new ComicGeneroService_2(oRequest, ob);
+                        ComicGeneroService_0 oComicGeneroService0 = new ComicGeneroService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oComicGeneroService2.get();
+                                oReplyBean = oComicGeneroService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oComicGeneroService2.getcount();
+                                oReplyBean = oComicGeneroService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oComicGeneroService2.getpage();
+                                oReplyBean = oComicGeneroService0.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oComicGeneroService0.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
                         }
                         break;
+
                     case "comiceditorial":
-                        ComicEditorialService_2 oComicEditorialService2 = new ComicEditorialService_2(oRequest, ob);
+                        ComicEditorialService_0 oComicEditorialService0 = new ComicEditorialService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oComicEditorialService2.get();
+                                oReplyBean = oComicEditorialService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oComicEditorialService2.getcount();
+                                oReplyBean = oComicEditorialService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oComicEditorialService2.getpage();
+                                oReplyBean = oComicEditorialService0.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oComicEditorialService0.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -926,16 +983,19 @@ public class ServiceFactory {
                         }
                         break;
                     case "autorespecialidad":
-                        AutorEspecialidadService_2 oAutorEspecialidadService2 = new AutorEspecialidadService_2(oRequest, ob);
+                        AutorEspecialidadService_0 oAutorEspecialidadService0 = new AutorEspecialidadService_0(oRequest, ob);
                         switch (op) {
                             case "get":
-                                oReplyBean = oAutorEspecialidadService2.get();
+                                oReplyBean = oAutorEspecialidadService0.get();
                                 break;
                             case "getcount":
-                                oReplyBean = oAutorEspecialidadService2.getcount();
+                                oReplyBean = oAutorEspecialidadService0.getcount();
                                 break;
                             case "getpage":
-                                oReplyBean = oAutorEspecialidadService2.getpage();
+                                oReplyBean = oAutorEspecialidadService0.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oAutorEspecialidadService0.getpageX();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -993,6 +1053,32 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
+//                    case "carrito":
+//                        CarritoService_2 oCarritoService = new CarritoService_2(oRequest, ob);
+//                        switch (op) {
+//                            case "add":
+//                                oReplyBean = oCarritoService.add();
+//                                break;
+//                            case "empty":
+//                                oReplyBean = oCarritoService.empty();
+//                                break;
+//                            case "reduce":
+//                                oReplyBean = oCarritoService.reduce();
+//                                break;
+//                            case "show":
+//                                oReplyBean = oCarritoService.show();
+//                                break;
+//                            case "buy":
+//                                oReplyBean = oCarritoService.buy();
+//                                break;
+//                            case "size":
+//                                oReplyBean = oCarritoService.size();
+//                                break;
+//                            default:
+//                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+//                                break;
+//                        }
+//                        break;
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
