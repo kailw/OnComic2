@@ -15,6 +15,7 @@ import net.daw.connection.publicConnectionInterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
 import net.daw.dao.daoImplementation_0.UsuarioDao_0;
 import net.daw.factory.ConnectionFactory;
+import net.daw.factory.DaoFactory;
 import net.daw.service.genericServiceImplementation.GenericServiceImplementation;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 
@@ -69,6 +70,34 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         } else {
             oReplyBean = new ReplyBean(401, "No active session");
         }
+        return oReplyBean;
+    }
+
+    public ReplyBean activar() throws Exception {
+        ReplyBean oReplyBean;
+        ConnectionInterface oConnectionPool = null;
+        Connection oConnection;
+        String strLogin = oRequest.getParameter("user");
+        String strPassword = oRequest.getParameter("pass");
+        String strToken = oRequest.getParameter("token");
+
+        oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+        oConnection = oConnectionPool.newConnection();
+        UsuarioDao_0 oUsuarioDao = new UsuarioDao_0(oConnection, ob, usuarioSession);
+
+        UsuarioBean oUsuarioBean = oUsuarioDao.activar(strLogin, strPassword, strToken);
+        if (oUsuarioBean != null) {
+            if (oUsuarioBean.getId() > 0) {
+                oRequest.getSession().setAttribute("user", oUsuarioBean);
+                Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
+                oReplyBean = new ReplyBean(200, oGson.toJson(oUsuarioBean));
+            } else {
+                oReplyBean = new ReplyBean(401, "Bad Authentication");
+            }
+        } else {
+            oReplyBean = new ReplyBean(401, "Bad Authentication");
+        }
+        oConnectionPool.disposeConnection();
         return oReplyBean;
     }
 }

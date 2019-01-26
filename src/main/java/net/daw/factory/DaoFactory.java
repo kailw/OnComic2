@@ -189,6 +189,12 @@ public class DaoFactory {
                     case "especialidad":
                         oDao = new EspecialidadDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
+                    case "idioma":
+                        oDao = new IdiomaDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comicidioma":
+                        oDao = new ComicIdiomaDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
                     case "factura":
                         oDao = new FacturaDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;

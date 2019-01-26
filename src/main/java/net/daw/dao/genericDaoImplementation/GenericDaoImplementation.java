@@ -17,6 +17,7 @@ import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.factory.BeanFactory;
 import net.daw.helper.SqlBuilder;
 
+
 /**
  *
  * @author a024465169t
@@ -49,7 +50,7 @@ public class GenericDaoImplementation implements DaoInterface {
         strSQL_remove = "DELETE FROM " + ob + " WHERE id=?";
 //        strSQL_getcount = "SELECT COUNT(id) FROM " + ob;
         //strSQL_create = "INSERT INTO " + ob;
-        //strSQL_update = "UPDATE " + ob + " SET ";
+        strSQL_update = "UPDATE " + ob + " SET ";
         strSQL_getpage = "SELECT * FROM " + ob;
 
     }
@@ -163,11 +164,11 @@ public class GenericDaoImplementation implements DaoInterface {
     @Override
     public int update(BeanInterface oBean) throws Exception {
         int iResult = 0;
-        String strSQL = "UPDATE " + ob + " SET ";
-        strSQL += oBean.getPairs();
+//        String strSQL = "UPDATE " + ob + " SET ";
+        strSQL_update += oBean.getPairs();
         PreparedStatement oPreparedStatement = null;
         try {
-            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement = oConnection.prepareStatement(strSQL_update);
             iResult = oPreparedStatement.executeUpdate();
 
         } catch (SQLException e) {

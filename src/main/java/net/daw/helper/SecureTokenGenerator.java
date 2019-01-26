@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.daw.bean.beanImplementation;
+package net.daw.helper;
 
 import java.security.SecureRandom;
 
@@ -28,7 +28,7 @@ public class SecureTokenGenerator {
      * Generate the next secure random token in the series.
      * @return 
      */
-    public String nextToken() {
+    public static String nextToken() {
         for (int idx = 0; idx < buf.length; ++idx) {
             buf[idx] = symbols[random.nextInt(symbols.length)];
         }

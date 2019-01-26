@@ -5,6 +5,7 @@
  */
 package net.daw.bean.beanImplementation;
 
+import net.daw.helper.SecureTokenGenerator;
 import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -209,7 +210,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += EncodingHelper.quotate(pass) + ",";
         strColumns += EncodingHelper.quotate(email) + ",";
         strColumns += id_tipousuario + ",";
-        strColumns += EncodingHelper.quotate(token()) + ",";
+        strColumns += EncodingHelper.quotate(SecureTokenGenerator.nextToken()) + ",";
         strColumns += 0;
         return strColumns;
     }
@@ -232,12 +233,4 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         return strPairs;
 
     }
-
-    public String token() {
-        SecureTokenGenerator tokenGenerator = new SecureTokenGenerator();
-        
-        return tokenGenerator.nextToken();
-
-    }
-
 }

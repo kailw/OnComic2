@@ -5,6 +5,8 @@
  */
 package net.daw.dao.daoImplementation_0;
 
+import net.daw.dao.daoImplementation_2.*;
+import net.daw.dao.daoImplementation_1.*;
 import java.sql.Connection;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
@@ -15,9 +17,9 @@ import net.daw.dao.publicDaoInterface.DaoInterface;
  *
  * @author a044531896d
  */
-public class TipoproductoDao_0 extends GenericDaoImplementation implements DaoInterface {
+public class ComicIdiomaDao_0 extends GenericDaoImplementation implements DaoInterface {
 
-    public TipoproductoDao_0(Connection oConnection, String ob, UsuarioBean oUsuarioBeanSession) {
+    public ComicIdiomaDao_0(Connection oConnection, String ob, UsuarioBean oUsuarioBeanSession) {
         super(oConnection, ob, oUsuarioBeanSession);
     }
 
@@ -29,11 +31,6 @@ public class TipoproductoDao_0 extends GenericDaoImplementation implements DaoIn
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
         throw new Exception("Error en Dao create de " + ob + ": No autorizado");
-    }
-
-    @Override
-    public int update(BeanInterface oBean) throws Exception {
-        throw new Exception("Error en Dao update de " + ob + ": No autorizado");
     }
 
 }
