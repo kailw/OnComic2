@@ -37,8 +37,7 @@ public class EnviarCorreo {
             message.setFrom(new InternetAddress(REMITENTE));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailDestinatario));   //Destinatario
             message.setSubject("OnComics: Validación de email");
-            String link = "http://localhost:8080/json?ob=usuario&op=activar&user="+ loginUsuario + 
-                    "&pass=" + passUsuario + "&token="+ token;
+            String link = "http://localhost:8080/json?ob=usuario&op=activar&token="+ token;
             message.setText("<h3>Bienvenido a Oncomic " + nombreUsuario + "</h3>"
                     + "<div><a href='" + link + "'> Haz click en este enlace para confirmar tu cuenta </a></div><br>"
                     + "<small>Mensaje automático; por favor, no responda este correo</small>",

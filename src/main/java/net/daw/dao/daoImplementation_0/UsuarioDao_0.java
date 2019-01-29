@@ -113,15 +113,15 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
     }
 
     public UsuarioBean activar(String strUserName, String strPassword, String strToken) throws Exception {
-        String strSQL = "SELECT * FROM " + ob + " WHERE login=? AND pass=? AND token=?";
+        String strSQL = "SELECT * FROM " + ob + " token=?";
         UsuarioBean oUsuarioBean;
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
             oPreparedStatement = oConnection.prepareStatement(strSQL);
-            oPreparedStatement.setString(1, strUserName);
-            oPreparedStatement.setString(2, strPassword);
-            oPreparedStatement.setString(3, strToken);
+//            oPreparedStatement.setString(1, strUserName);
+//            oPreparedStatement.setString(2, strPassword);
+            oPreparedStatement.setString(1, strToken);
             oResultSet = oPreparedStatement.executeQuery();
             if (oResultSet.next()) {
                 oUsuarioBean = new UsuarioBean();
