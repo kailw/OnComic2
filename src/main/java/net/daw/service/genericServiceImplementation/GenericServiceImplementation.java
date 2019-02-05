@@ -12,10 +12,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import net.daw.bean.beanImplementation.ReplyBean;
+import net.daw.bean.beanImplementation.TipousuarioBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.connection.publicConnectionInterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
+import net.daw.dao.daoImplementation_0.LineaDao_0;
+import net.daw.dao.daoImplementation_1.LineaDao_1;
 import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.factory.BeanFactory;
 import net.daw.factory.ConnectionFactory;
@@ -172,8 +175,28 @@ public class GenericServiceImplementation implements ServiceInterface {
             HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
-            DaoInterface oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
-            ArrayList<BeanInterface> alBean = oDao.getpageX(iRpp, iPage, hmOrder, 1, idAjena, campo);
+            TipousuarioBean tipo = new TipousuarioBean();
+            ArrayList<BeanInterface> alBean = null;
+            DaoInterface oDao = null;
+            if (usuarioSession != null) {
+                int tipoUsuarioIdSesion = usuarioSession.getObj_tipoUsuario().getId();
+                String tipoUsuarioDescSesion = usuarioSession.getObj_tipoUsuario().getDesc();
+                if (campo.equalsIgnoreCase("id_comic")) {
+                    tipo.setId(1);
+                    usuarioSession.setObj_tipoUsuario(tipo);
+                    oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
+                } else {
+                    oDao = DaoFactory.getDao(oConnection, ob, usuarioSession);
+                }
+                alBean = oDao.getpageX(iRpp, iPage, hmOrder, 1, idAjena, campo);
+                tipo.setId(tipoUsuarioIdSesion);
+                tipo.setDesc(tipoUsuarioDescSesion);
+                usuarioSession.setObj_tipoUsuario(tipo);
+            } else if (campo.equalsIgnoreCase("id_comic")) {
+                LineaDao_0 od = new LineaDao_0(oConnection, ob, usuarioSession);
+                alBean = od.getpageX(iRpp, iPage, hmOrder, 1, idAjena, campo);
+            }
+
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oReplyBean = new ReplyBean(200, oGson.toJson(alBean));
         } catch (Exception ex) {

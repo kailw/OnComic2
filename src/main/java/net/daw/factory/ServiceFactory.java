@@ -1085,6 +1085,17 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
+                    case "linea":
+                        LineaService_2 oLineaService2 = new LineaService_2(oRequest, ob);
+                        switch (op) {
+                            case "getpagex"://obtengo las lineas de la factura
+                                oReplyBean = oLineaService2.getpageX();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;

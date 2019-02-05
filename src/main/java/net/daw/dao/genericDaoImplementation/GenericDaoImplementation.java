@@ -17,7 +17,6 @@ import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.factory.BeanFactory;
 import net.daw.helper.SqlBuilder;
 
-
 /**
  *
  * @author a024465169t
@@ -184,13 +183,13 @@ public class GenericDaoImplementation implements DaoInterface {
     @Override
     public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand, int idAjena, String campo) throws Exception {
         String strSQL = "";
-        strSQL = "SELECT * FROM " + ob;
+        strSQL = "SELECT * FROM " + ob;        
         if (idAjena > 0) {
             strSQL += " WHERE " + campo + "=" + idAjena;
             strSQL += SqlBuilder.buildSqlOrder(hmOrder);
             strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
         } else {
-            strSQL += " GROUP BY " + campo + " ORDER BY SUM(cantidad) DESC LIMIT 0, 10";
+            strSQL += " GROUP BY " + campo + " ORDER BY SUM(cantidad) DESC LIMIT 0, 10";                        
         }
         ArrayList<BeanInterface> alBean;
         ResultSet oResultSet = null;
@@ -202,8 +201,8 @@ public class GenericDaoImplementation implements DaoInterface {
             while (oResultSet.next()) {
                 BeanInterface oBean = BeanFactory.getBean(ob);
                 oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
-                alBean.add(oBean);
-            }
+                alBean.add(oBean);                
+            }            
         } catch (SQLException e) {
             throw new Exception("Error en Dao getpage de " + ob, e);
         } finally {

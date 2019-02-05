@@ -169,7 +169,7 @@ public class ComicBean extends GenericBeanImplementation implements BeanInterfac
         this.setExistencias(oResultSet.getInt("existencias"));
         this.setPrecio(oResultSet.getFloat("precio"));
         this.setDescuento(oResultSet.getFloat("descuento"));
-        this.setFoto(oResultSet.getString("imagen"));
+        this.setFoto(oResultSet.getString("foto"));
 
         if (expand > 0) {
             DaoInterface ocoleccionDao = DaoFactory.getDao(oConnection, "coleccion", oUsuarioBeanSession);

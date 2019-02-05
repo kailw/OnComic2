@@ -85,7 +85,7 @@ public class FacturaBean extends GenericBeanImplementation implements BeanInterf
         this.setFecha(oResultSet.getDate("fecha"));
         this.setIva(oResultSet.getFloat("iva"));
 
-        DaoInterface oLineaDao = DaoFactory.getDao(oConnection, "linea", oUsuarioBeanSession);
+        DaoInterface oLineaDao = DaoFactory.getDao(oConnection, "linea", oUsuarioBeanSession);        
         this.setNumLinea(oLineaDao.getcount(this.id, "id_factura"));
 
         if (expand > 0) {

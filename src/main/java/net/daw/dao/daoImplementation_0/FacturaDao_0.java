@@ -17,12 +17,8 @@ public class FacturaDao_0 extends GenericDaoImplementation implements DaoInterfa
 
     @Override
     public BeanInterface get(int id, Integer expand) throws Exception {
-//         if (id == oUsuarioBeanSession.getId()) {
-//            FacturaBean oFacturaBean = (FacturaBean) super.get(id, expand);
-//            return oFacturaBean;
-//        } else {
-        throw new Exception("Error en Dao get de " + ob + ": No autorizado");
-//        }
+        return super.get(id, expand);
+
     }
 
 //    @Override
@@ -35,7 +31,6 @@ public class FacturaDao_0 extends GenericDaoImplementation implements DaoInterfa
 //    public int remove(int id) throws Exception {
 //        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
 //    }
-
 //    @Override
 //    public int getcount(int idTabla, String campo)  throws Exception {
 //        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
@@ -45,5 +40,4 @@ public class FacturaDao_0 extends GenericDaoImplementation implements DaoInterfa
 //    public BeanInterface create(BeanInterface oBean) throws Exception {
 //        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
 //    }
-
 }
