@@ -64,7 +64,7 @@ public class ServiceFactory {
         }
 
         ReplyBean oReplyBean = null;
-
+        ComicService_0 oComicService0 = new ComicService_0(oRequest, ob);
         switch (idSessionUserTipe) {
             case 1:
                 switch (ob) {
@@ -223,6 +223,9 @@ public class ServiceFactory {
                                 break;
                             case "getpagex":
                                 oReplyBean = oComicService1.getpageX();
+                                break;
+                            case "getpagecomicadvanced":
+                                oReplyBean = oComicService0.getpagecomicadvanced();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -607,6 +610,9 @@ public class ServiceFactory {
                             case "getpagex":
                                 oReplyBean = oComicService2.getpageX();
                                 break;
+                            case "getpagecomicadvanced":
+                                oReplyBean = oComicService0.getpagecomicadvanced();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
@@ -852,7 +858,6 @@ public class ServiceFactory {
                         }
                         break;
                     case "comic":
-                        ComicService_0 oComicService0 = new ComicService_0(oRequest, ob);
                         switch (op) {
                             case "get":
                                 oReplyBean = oComicService0.get();
@@ -865,6 +870,9 @@ public class ServiceFactory {
                                 break;
                             case "getpagex":
                                 oReplyBean = oComicService0.getpageX();
+                                break;
+                            case "getpagecomicadvanced":
+                                oReplyBean = oComicService0.getpagecomicadvanced();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

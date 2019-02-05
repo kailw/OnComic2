@@ -6,6 +6,7 @@
 package net.daw.service.serviceImplementation_1;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -14,11 +15,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.ComicBean;
+import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.connection.publicConnectionInterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
+import net.daw.dao.daoImplementation_0.ComicDao_0;
 import net.daw.dao.daoImplementation_1.ComicDao_1;
+import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.factory.ConnectionFactory;
+import net.daw.factory.DaoFactory;
 import net.daw.helper.EncodingHelper;
+import net.daw.helper.ParameterCook;
 import net.daw.service.genericServiceImplementation.GenericServiceImplementation;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 import org.apache.commons.fileupload.FileItem;
@@ -90,4 +96,5 @@ public class ComicService_1 extends GenericServiceImplementation implements Serv
         }
         return oReplyBean;
     }
+
 }
