@@ -141,7 +141,7 @@
             </tr>
             
             
-            <tr ng-repeat="fila in ajaxDataProductos">
+            <tr ng-repeat="fila in ajaxDataProductos track by $index">
                 <td>{{fila.id}}</td>
                 <td>{{fila.titulo}}</td>
                 <td>{{fila.desc}}</td>

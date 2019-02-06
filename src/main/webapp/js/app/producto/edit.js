@@ -3,7 +3,7 @@
 moduleProducto.controller('productoEditController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
         $scope.id = $routeParams.id;
-        $scope.ob = "producto";
+        $scope.ob = "comic";
 
 
         $http({

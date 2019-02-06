@@ -2,7 +2,7 @@
 
 moduleProducto.controller('productoRemoveController', ['$scope', '$http', '$location', 'toolService', '$routeParams','sessionService',
     function ($scope, $http, $location, toolService, $routeParams,sessionService) {
-        $scope.ob = "producto";
+        $scope.ob = "comic";
         $scope.id = $routeParams.id;
 
         $http({

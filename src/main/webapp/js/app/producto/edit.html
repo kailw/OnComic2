@@ -4,7 +4,7 @@
     <div class="primeraParte"></div>
     <a href="javascript:window.history.back();"> <button class="btn btn-success">Volver</button> </a>    
     <ng-form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
-        <h3 style="text-align: center"> <i class="fa fa-box-open"></i> Editar producto</h3>
+        <h3 style="text-align: center"> <i class="fa fa-box-open"></i> Editar comic</h3>
 
         <div class="form-group row justify-content-center">
             <div class="col-2">
@@ -20,7 +20,7 @@
                 <label for="codigo" class="col-form-label">Codigo</label>
             </div>
             <div class="col-5">
-                <input type="text" class="form-control" id="codigo" name="codigo" ng-model="ajaxDatoProducto.codigo" ng-required="true"
+                <input type="text" class="form-control" id="codigo" name="codigo" ng-model="ajaxDatoProducto.titulo" ng-required="true"
                        ng-class="{ 'is-invalid' : userForm.codigo.$invalid && !userForm.codigo.$pristine, 'is-valid': userForm.codigo.$valid && !userForm.codigo.$pristine}"/>                       
                 <div ng-show="userForm.codigo.$invalid && !userForm.codigo.$pristine" class="alert alert-danger" >Codigo requerido.</div>
 
@@ -86,9 +86,9 @@
             </div>            
         </div>
 
-        <tipoproducto-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoProducto.obj_tipoProducto" 
-                                on-tipoproducto-set="tipoProductoRefresh(this,false)"></tipoproducto-selection>
-
+<!--        <tipoproducto-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoProducto.obj_coleccion" 
+                                on-tipoproducto-set="tipoProductoRefresh(this,false)"></tipoproducto-selection>-->
+<!--
         <div class="form-group row justify-content-center">
             <div class="col-2">
                 <label for="obj_tipoProducto" class="col-form-label">Tipo Producto</label>
@@ -101,7 +101,7 @@
                               data-target="#cadd-location-modal">                                  
                         </span>
                     </div>
-                    <input ng-model="ajaxDatoProducto.obj_tipoProducto.id"
+                    <input ng-model="ajaxDatoProducto.coleccion.id"
                            ng-change="tipoProductoRefresh(this, true)"
                            aria-describedby="basic-addon2"
                            id="obj_tipoProducto"
@@ -113,17 +113,17 @@
                            ng-class="{ 'is-invalid' : userForm.obj_tipoProducto.$invalid && !userForm.obj_tipoProducto.$pristine, 'is-valid': userForm.obj_tipoProducto.$valid && !userForm.obj_tipoProducto.$pristine}" />
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="form-group row justify-content-center">
             <div class="col-2">               
             </div>
             <div class="col-5"> 
                 <div class="form-group" style="width: auto;">
-                    <a href="tipoproducto/view/{{ajaxDatoProducto.obj_tipoProducto.id}}" class="form-control btn btn-light" 
+                    <a href="tipoproducto/view/{{ajaxDatoProducto.coleccion.id}}" class="form-control btn btn-light" 
                        style="background: lightgray; color:dark; text-align:left;" class="input-group-text"
                        ng-class="{ 'disabled': userForm.obj_tipoProducto.$invalid}" >
-                        <span >Tipo de producto: {{ajaxDatoProducto.obj_tipoProducto.desc}} {{vacio}}</span>
+                        <span >Tipo de producto: {{ajaxDatoProducto.coleccion.desc}} {{vacio}}</span>
                     </a>
                 </div>
             </div>      
@@ -135,7 +135,7 @@
             </div>            
             <div class="col-5">
                 <div ng-show="!userForm.obj_tipoProducto.$valid" class="alert alert-danger" style="width: auto;" role="alert">
-                    El tipo de producto es incorrecto.
+                    La coleccion es incorrecta.
                 </div>
             </div>
         </div>
