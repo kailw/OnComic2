@@ -30,8 +30,11 @@ moduleUsuario.controller('usuarioEditController', ['$scope', '$http', '$location
                 ape1: $scope.ajaxDatoUsuario.ape1,
                 ape2: $scope.ajaxDatoUsuario.ape2,
                 login: $scope.ajaxDatoUsuario.login,
-                //pass: forge_sha256($scope.jaxDatoUsuario.pass),
-                id_tipoUsuario: $scope.ajaxDatoUsuario.obj_tipoUsuario.id
+//                pass: forge_sha256($scope.jaxDatoUsuario.pass),
+                pass: "B221D9DBB083A7F33428D7C2A3C3198AE925614D70210E28716CCAA7CD4DDB79",
+                email: $scope.ajaxDatoUsuario.email,
+                id_tipousuario: $scope.ajaxDatoUsuario.obj_tipoUsuario.id,
+                validacion: $scope.ajaxDatoUsuario.validacion
             }
             $http({
                 method: 'GET',
@@ -55,8 +58,8 @@ moduleUsuario.controller('usuarioEditController', ['$scope', '$http', '$location
 
         $scope.tipoUsuarioRefresh = function (quiensoy, consulta) {
             var form = quiensoy;
-            $scope.vacio = "";            
-            if (consulta) {                
+            $scope.vacio = "";
+            if (consulta) {
                 $http({
                     method: 'GET',
                     url: 'json?ob=tipousuario&op=get&id=' + $scope.ajaxDatoUsuario.obj_tipoUsuario.id

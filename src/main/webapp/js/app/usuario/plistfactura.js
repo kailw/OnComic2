@@ -5,6 +5,7 @@ moduleUsuario.controller('usuarioPlistFacturaController', ['$scope', 'toolServic
         $scope.totalPages = 1;
         $scope.id = $routeParams.id;
         $scope.select = ["5", "10", "25", "50", "500"];
+        
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
@@ -49,7 +50,7 @@ moduleUsuario.controller('usuarioPlistFacturaController', ['$scope', 'toolServic
         //getcount
         $http({
             method: 'GET',
-            url: '/json?ob=factura&op=getcountfacturauser&id=' + $scope.id
+            url: '/json?ob=factura&op=getcount&id=' + $scope.id
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuariosNumber = response.data.message;
@@ -66,7 +67,7 @@ moduleUsuario.controller('usuarioPlistFacturaController', ['$scope', 'toolServic
 
         $http({
             method: 'GET',
-            url: '/json?ob=factura&op=getpagexusuario&id=' + $scope.id + '&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
+            url: '/json?ob=factura&op=getpagex&rpp=' + $scope.rpp + '&page=' + $scope.page + '&campo=id_usuario&id=' + $scope.id + $scope.orderURLServidor
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;

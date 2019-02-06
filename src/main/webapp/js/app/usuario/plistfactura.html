@@ -1,9 +1,9 @@
 <header-component></header-component>
 <div class="container-fluid">
-    <div class="row">        
-        <main role="main" class="col-md-9 col-lg-12" style="margin-top: 70px;">
+    <div class="row MUpBot">        
+        <main role="main" class="col-md-9 col-lg-12">
             <a href="usuario/plist"> <button class="btn btn-success" style="margin-bottom: 20px;">Volver</button> </a> 
-            <div class="d-flex justify-content-between flex-wrap aligpt-3 pb-2 mb-3 border-bottom">                
+            <div class="d-flex justify-content-between flex-wrap aligpt-3 pb-2 ">                
                 <h1 class="h2"> <i class="fa fa-user"></i> Usuario: <a href="usuario/view/{{ajaxDatosUsuarios.id}}"> {{ajaxDatosUsuarios.nombre}} {{ajaxDatosUsuarios.ape1}}</a></h1>
                 <div class="btn-group" style="width:400px;">
                     <p class="mt-2" style="width:200px;">Selecciona RPP: </p>
@@ -68,14 +68,14 @@
                 <tbody>
                     <tr ng-repeat="fila in ajaxDataUsuarios track by $index">
                         <th>{{fila.id}}</th>
-                        <td>{{fila.fecha| date:'d-M-y'}}</td>
+                        <td>{{fila.fecha}}</td>
                         <td>{{fila.iva}}</td>                                                
                         <td>
-                            <a href="factura/plistlinea/{{fila.id}}/10/1" class="btn table-warning" ng-if="fila.link_linea >= 1">
-                                <i>{{fila.link_linea}}</i>
+                            <a href="factura/plistlinea/{{fila.id}}/10/1" class="btn table-warning" ng-if="fila.numLinea >= 1">
+                                <i>{{fila.numLinea}}</i>
                             </a>
-                            <a href="linea/create/{{fila.id}}" class="btn table-warning" ng-if="fila.link_linea == 0">
-                                <i>{{fila.link_linea}}</i>
+                            <a href="linea/create/{{fila.id}}" class="btn table-warning" ng-if="fila.numLinea == 0">
+                                <i>{{fila.numLinea}}</i>
                             </a>
                         </td>
                         <td>
@@ -90,7 +90,7 @@
                             <a href="factura/remove/{{fila.id}}">
                                 <button style="font-size:15px" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
                             </a>
-                            <a ng-click="pdf(fila.id,fila.fecha, fila.iva)" class="btn btn-primary"  ng-class="{'disabled': {{fila.link_linea}} <= 0}">
+                            <a ng-click="pdf(fila.id,fila.fecha, fila.iva)" class="btn btn-primary"  ng-class="{'disabled': {{fila.numLinea}} <= 0}">
                               <i class="fa fa-print" style="color:black"></i>
                             </a>
                         </td>                        

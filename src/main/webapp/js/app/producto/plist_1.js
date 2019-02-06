@@ -5,7 +5,7 @@ moduleProducto.controller('productoPlist_1Controller', ['$scope', '$http', '$loc
 
         $scope.totalPages = 1;
         $scope.select = ["5", "10", "25", "50", "500"];
-        $scope.ob = "producto";
+        $scope.ob = "comic";
 
 
         if (!$routeParams.order) {

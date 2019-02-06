@@ -66,7 +66,7 @@ public class GenericDaoImplementation implements DaoInterface {
             oResultSet = oPreparedStatement.executeQuery();
             if (oResultSet.next()) {
                 oBean = BeanFactory.getBean(ob);
-                oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+                oBean.fill(oResultSet, oConnection, expand + 1, oUsuarioBeanSession);
             } else {
                 oBean = null;
             }

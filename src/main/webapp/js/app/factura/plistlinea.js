@@ -12,8 +12,6 @@ moduleFactura.controller('facturaPlistLineaController', ['$scope', 'toolService'
 
         $scope.rpp = 500;
 
-
-
         $scope.page = 1;
 
 
@@ -36,7 +34,7 @@ moduleFactura.controller('facturaPlistLineaController', ['$scope', 'toolService'
         //getcount
         $http({
             method: 'GET',
-            url: '/json?ob=linea&op=getcountxlinea&id=' + $scope.id
+            url: '/json?ob=linea&op=getcount&campo=id_factura&id=' + $scope.id
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDatoLineaFactura = response.data.message;
@@ -45,25 +43,12 @@ moduleFactura.controller('facturaPlistLineaController', ['$scope', 'toolService'
                 $scope.page = $scope.totalPages;
                 $scope.update();
             }
-
             $http({
                 method: 'GET',
-                url: '/json?ob=linea&op=getlineafactura&rpp=' + $scope.rpp + '&page=' + $scope.page + '&id=' + $scope.id
+                url: '/json?ob=linea&op=getpagex&rpp=' + $scope.rpp + '&page=1&campo=id_factura&id=' + $scope.id
             }).then(function (response) {
                 $scope.status = response.status;
                 $scope.ajaxDatoLineaFactura = response.data.message;
-                $scope.idUsuarioFactura = response.data.message[0].obj_Factura.id_usuario;
-                $scope.idFactura = response.data.message[0].obj_Factura.id;
-                $http({
-                    method: 'GET',
-                    url: '/json?ob=usuario&op=get&id=' + $scope.idUsuarioFactura
-                }).then(function (response) {
-                    $scope.status = response.status;
-                    $scope.ajaxDatosUsuarios = response.data.message;
-                }, function (response) {
-                    $scope.status = response.status;
-                    $scope.ajaxDatosUsuarios = response.data.message || 'Request failed';
-                });
             }, function (response) {
                 $scope.status = response.status;
                 $scope.ajaxDatoLineaFactura = response.data.message || 'Request failed';

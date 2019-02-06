@@ -3,7 +3,7 @@
 moduleTipoproducto.controller('tipoproductoViewController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
         $scope.id = $routeParams.id;
-        $scope.ob = "tipoproducto";
+        $scope.ob = "genero";
 
         $http({
             method: 'GET',

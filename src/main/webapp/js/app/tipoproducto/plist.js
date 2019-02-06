@@ -3,7 +3,7 @@
 moduleTipoproducto.controller('tipoproductoPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
 
-        $scope.ob = "tipoproducto";
+        $scope.ob = "genero";
         $scope.totalPages = 1;
         $scope.select = ["5", "10", "25", "50", "500"];
 

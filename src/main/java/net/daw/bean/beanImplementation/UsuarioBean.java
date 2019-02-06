@@ -51,7 +51,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
     @Expose(serialize = false)
     private String token;
 
-    @Expose(serialize = false)
+    @Expose
     private Boolean validacion;
 
     @Expose(deserialize = false)
@@ -225,9 +225,8 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strPairs += "ape2 =" + EncodingHelper.quotate(ape2) + ",";
         strPairs += "login =" + EncodingHelper.quotate(login) + ",";
         strPairs += "pass =" + EncodingHelper.quotate(pass) + ",";
-        strPairs += "pass =" + EncodingHelper.quotate(email) + ",";
+        strPairs += "email =" + EncodingHelper.quotate(email) + ",";
         strPairs += "id_tipousuario =" + id_tipousuario + ",";
-        strPairs += "token =" + EncodingHelper.quotate(token) + ",";
         strPairs += "validacion =" + validacion;
         strPairs += " WHERE id=" + id;
         return strPairs;

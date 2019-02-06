@@ -3,8 +3,8 @@
 }
 
 .primeraParte, terceraParte{
-    margin-top: 75px;    
-    margin-bot: 25px;    
+    margin-top: 6%;    
+    margin-bot: 1.2%;    
 }
 .segundaParte {
     margin-top: 30px;
@@ -65,9 +65,28 @@
     background-position: left top;                    
 }*/
 
+/* ONCOMICS MODIFICACIONES*/
+.NDecoration {
+    text-decoration: none !important;
+}
 
+a{
+    text-decoration: none !important;
+}
+
+.MUpBot {
+    margin: 1.8% 0;
+}
 * {
     box-sizing: border-box;
+}
+
+.md-checkbox.md-default-theme:not([disabled]).md-primary:not(.md-checked) .md-icon, md-checkbox:not([disabled]).md-primary:not(.md-checked) .md-icon{
+    border: 1px solid  #ced4da !important;    
+}
+
+md-checkbox.md-default-theme:not([disabled]).md-primary.md-checked .md-icon, md-checkbox:not([disabled]).md-primary.md-checked .md-icon {
+    background: #66C595;
 }
 
 @media (max-width: 760px){

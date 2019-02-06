@@ -1,7 +1,7 @@
 'use strict'
 
-moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams',"sessionService",
-    function ($scope, $http, $location, toolService, $routeParams,sessionService) {
+moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams',
+    function ($scope, $http, $location, toolService, $routeParams) {
 
         $scope.totalPages = 1;
         $scope.select = ["5", "10", "25", "50", "500"];
@@ -30,7 +30,7 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
                 $scope.page = 1;
             }
         }
-        
+
 
         $scope.resetOrder = function () {
             $location.url($scope.ob + "/plist/" + $scope.rpp + "/1");
@@ -45,7 +45,8 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
             } else {
                 $scope.orderURLServidor += "-" + order + "," + align;
                 $scope.orderURLCliente += "-" + order + "," + align;
-            };
+            }
+            ;
             $location.url($scope.ob + "/plist/" + $scope.rpp + "/" + $scope.page + "/" + $scope.orderURLCliente);
         };
 
@@ -108,8 +109,7 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
                     }
                 }
             }
-        }
-        ;
+        };
 
         $scope.isActive = toolService.isActive;
     }

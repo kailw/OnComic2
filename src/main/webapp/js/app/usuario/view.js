@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-moduleUsuario.controller('usuarioViewController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
-    function ($scope, $http, $location, toolService, $routeParams, sessionService) {
+moduleUsuario.controller('usuarioViewController', ['$scope', '$http', 'toolService', '$routeParams',
+    function ($scope, $http, toolService, $routeParams) {
         $scope.id = $routeParams.id;
         $scope.ob = "usuario";
 

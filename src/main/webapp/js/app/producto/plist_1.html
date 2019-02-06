@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row" style="margin-top: 80px;margin-bottom: 20px;">
         <div class="col-sm-6 col-md-4">
-            <h1 class="h2"><i class="fa fa-box-open"></i> Productos</h1>
+            <h1 class="h2"><i class="fas fa-book-open"></i> Comics</h1>
         </div>
         <div class="col-sm-auto col-md-auto ml-auto align-self-center">
             Selecciona RPP:
@@ -57,7 +57,7 @@
                 </th>     
 
                 <th style="min-width: 120px;">
-                    Código
+                    Título
                 </th>
                 <th>
                     Descripción
@@ -72,7 +72,7 @@
                     Foto
                 </th>
                 <th>
-                    Tipo de producto
+                    Coleccion
                 </th>
                 <th>
                     Acciones
@@ -143,13 +143,13 @@
             
             <tr ng-repeat="fila in ajaxDataProductos">
                 <td>{{fila.id}}</td>
-                <td>{{fila.codigo}}</td>
+                <td>{{fila.titulo}}</td>
                 <td>{{fila.desc}}</td>
                 <td>{{fila.existencias}}</td>
                 <td>{{fila.precio}}</td>
                 <td>{{fila.foto}}</td>                
                 <td>                    
-                    <a href="tipoproducto/view/{{fila.obj_tipoProducto.id}}">{{fila.obj_tipoProducto.desc}}</a>
+                    <a href="tipoproducto/view/{{fila.obj_coleccion.id}}">{{fila.obj_coleccion.desc}}</a>
                 </td>  
                 <td> 
                     <a  href="{{ob}}/view/{{fila.id}}"> 
